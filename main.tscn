@@ -1,0 +1,69 @@
+[gd_scene format=3 uid="uid://dqvy5vxf2nqkc"]
+
+[node name="Main" type="Node3D"]
+
+[node name="Floor" type="CSGBox3D" parent="."]
+size = Vector3(6, 0.001, 6)
+
+[node name="Table_leg" type="CSGCylinder3D" parent="Floor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, 0)
+radius = 0.1
+height = 0.8
+sides = 16
+
+[node name="Table_face" type="CSGCylinder3D" parent="Floor/Table_leg"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, 0)
+radius = 0.6
+height = 0.03
+sides = 32
+
+[node name="Ceiling" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
+size = Vector3(6, 0.001, 6)
+
+[node name="Light" type="CSGTorus3D" parent="Ceiling"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.05, 0)
+inner_radius = 0.1
+outer_radius = 0.2
+sides = 32
+ring_sides = 4
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Ceiling/Light"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00154066, -0.02, 0.00282019)
+light_color = Color(1, 0.905882, 0.0823529, 1)
+shadow_enabled = true
+
+[node name="Defuser_wall" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, -3)
+size = Vector3(6, 3, 0.2)
+
+[node name="Defuser_wall_window" type="CSGBox3D" parent="Defuser_wall"]
+operation = 2
+size = Vector3(3.5, 1, 0.3)
+
+[node name="Instructor_wall" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 3)
+size = Vector3(6, 3, 0.2)
+
+[node name="Instructor_wall_window_1" type="CSGBox3D" parent="Instructor_wall"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.3, 0, 0)
+operation = 2
+size = Vector3(1, 0.9, 0.3)
+
+[node name="Instructor_wall_window_2" type="CSGBox3D" parent="Instructor_wall"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3, 0, 0)
+operation = 2
+size = Vector3(1, 0.9, 0.3)
+
+[node name="Left_wall" type="CSGBox3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 3, 1.5, 0)
+size = Vector3(6, 3, 0.2)
+
+[node name="Left_wall_door" type="CSGBox3D" parent="Left_wall"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.43187e-05, -0.548351, 0.000229836)
+operation = 2
+size = Vector3(1, 2, 0.3)
+
+[node name="Right_wall" type="CSGBox3D" parent="."]
+transform = Transform3D(0.000171833, -6.15714e-05, 1, -0.000211296, 1, 6.16269e-05, -1, -0.000211312, 0.000171813, -3, 1.5, 0)
+size = Vector3(6, 3, 0.2)
