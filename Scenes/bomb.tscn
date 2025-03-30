@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://dyydrbgiya60v"]
+
+[ext_resource type="PackedScene" uid="uid://dgrk4ge7ybanv" path="res://Assets/suitcase_with_combination_lock.glb" id="1_yx723"]
+[ext_resource type="Script" uid="uid://bwvqbp6bva2xn" path="res://Scripts/Suitcase.gd" id="2_kdyat"]
+
+[node name="Bomb" type="Node3D"]
+
+[node name="Suitcase" parent="." instance=ExtResource("1_yx723")]
+transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0, 0, 0)
+script = ExtResource("2_kdyat")

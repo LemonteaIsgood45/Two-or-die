@@ -1,0 +1,40 @@
+[gd_scene format=3 uid="uid://dildxyuvn4kgw"]
+
+[node name="Node3D" type="Node3D"]
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="."]
+
+[node name="CSGCylinder3D6" type="CSGCylinder3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, -0.128848, 0.991664, 0, -0.991664, -0.128848, 0.00287862, 0.00423862, 0.0326171)
+radius = 0.002
+height = 0.0157574
+
+[node name="CSGCylinder3D7" type="CSGCylinder3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 0.83621, 0.54841, 0, -0.54841, 0.83621, 0.00287862, 0.00222517, 0.0410227)
+radius = 0.002
+height = 0.00885529
+
+[node name="CSGCylinder3D3" type="CSGCylinder3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 0.888048, -0.45975, 0, 0.45975, 0.888048, 0.00287862, 0.00152922, -0.034905)
+radius = 0.002
+height = 0.00710083
+
+[node name="CSGCylinder3D4" type="CSGCylinder3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, -0.223709, 0.974656, 0, -0.974656, -0.223709, 0.00287862, 0.00478399, -0.0005355)
+radius = 0.002
+height = 0.0229907
+
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 0.430228, 0.902721, 0, -0.902721, 0.430228, 0.00287862, 0.00394636, -0.0143559)
+radius = 0.002
+height = 0.00834228
+
+[node name="CSGCylinder3D5" type="CSGCylinder3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 0.264479, 0.964391, 0, -0.964391, 0.264479, 0.00287862, 0.00518219, 0.0176046)
+radius = 0.002
+height = 0.0161548
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, -0.0913104, 0.995822, 0, -0.995822, -0.0913104, 0.00287862, 0.00494399, -0.0259522)
+radius = 0.002
+height = 0.0176611
