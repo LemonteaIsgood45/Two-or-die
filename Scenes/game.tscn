@@ -19,6 +19,7 @@ transform = Transform3D(0.0380148, -0.183608, 0.982264, 0.00680396, 0.983, 0.183
 fov = 48.381
 
 [node name="MenuUI" type="Control" parent="Camera3DUI"]
+unique_name_in_owner = true
 layout_mode = 3
 anchors_preset = 0
 offset_left = 10.0
