@@ -1,17 +1,23 @@
-[gd_scene load_steps=5 format=3 uid="uid://cedlk0ad0j4dc"]
+[gd_scene load_steps=7 format=3 uid="uid://cedlk0ad0j4dc"]
 
 [ext_resource type="PackedScene" uid="uid://dqvy5vxf2nqkc" path="res://Scenes/main.tscn" id="1_ebmjs"]
-[ext_resource type="Script" uid="uid://d2m7cuwyga1jr" path="res://Scenes/game.gd" id="1_wrm1d"]
+[ext_resource type="Script" uid="uid://d2m7cuwyga1jr" path="res://Scripts/game.gd" id="1_wrm1d"]
 [ext_resource type="PackedScene" uid="uid://dyydrbgiya60v" path="res://Scenes/bomb.tscn" id="2_qxrlw"]
+[ext_resource type="Script" uid="uid://b4vy13kve75mc" path="res://Scripts/GameState.gd" id="3_3dryh"]
 
 [sub_resource type="GDScript" id="GDScript_ebmjs"]
 script/source = "extends Control
 "
 
+[sub_resource type="Environment" id="Environment_wrm1d"]
+ambient_light_color = Color(1, 1, 1, 1)
+fog_enabled = true
+
 [node name="Game" type="Node3D"]
 script = ExtResource("1_wrm1d")
 
 [node name="Main" parent="." instance=ExtResource("1_ebmjs")]
+script = ExtResource("3_3dryh")
 
 [node name="Camera3DUI" type="Camera3D" parent="."]
 unique_name_in_owner = true
@@ -71,7 +77,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00853853, 0.86854, -0.2947
 
 [node name="Camera3DDefuser" type="Camera3D" parent="."]
 unique_name_in_owner = true
-transform = Transform3D(-0.999667, 0.000126486, 0.0257978, 0.0257964, 0.016651, 0.999529, -0.000303133, 0.999861, -0.0166487, 0, 1.22874, -0.288314)
+transform = Transform3D(-1, -8.94069e-08, -3.67424e-08, -3.67423e-08, -2.36788e-08, 1, -8.9407e-08, 1, 2.36788e-08, 0, 1.22874, -0.288314)
 fov = 76.0103
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_wrm1d")
 
 [connection signal="pressed" from="Camera3DUI/MenuUI/VBoxContainer/OnlineGameButton" to="." method="_on_online_game_button_pressed"]

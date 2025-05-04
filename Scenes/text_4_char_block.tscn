@@ -1,0 +1,50 @@
+[gd_scene load_steps=3 format=3 uid="uid://obidvxexgq5p"]
+
+[ext_resource type="PackedScene" uid="uid://en11w86wgnkx" path="res://Scenes/text_char.tscn" id="1_7g160"]
+[ext_resource type="PackedScene" uid="uid://c7x28ypoxwuwn" path="res://Scenes/char_button.tscn" id="1_b5atx"]
+
+[node name="Node3D" type="Node3D"]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.69637e-05, -1.49012e-08, -0.000497341)
+size = Vector3(0.13, 0.14, 0.12)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="CSGBox3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00280163, 0.0478969, -0.017903)
+size = Vector3(0.1, 0.05, 0.05)
+
+[node name="char_1_up_button" parent="." instance=ExtResource("1_b5atx")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.037, 0.057, 0.014401)
+
+[node name="char_1" parent="." instance=ExtResource("1_7g160")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0371961, 0.0487025, -0.0182674)
+
+[node name="char_1_down_button" parent="." instance=ExtResource("1_b5atx")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.037, 0.0571439, -0.0513188)
+
+[node name="char_2_up_button" parent="." instance=ExtResource("1_b5atx")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.013, 0.057, 0.014)
+
+[node name="char_2" parent="." instance=ExtResource("1_7g160")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0132087, 0.049, -0.0179872)
+
+[node name="char_2_down_button" parent="." instance=ExtResource("1_b5atx")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.013, 0.057, -0.051)
+
+[node name="char_3_up_button" parent="." instance=ExtResource("1_b5atx")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.01, 0.057, 0.014)
+
+[node name="char_3" parent="." instance=ExtResource("1_7g160")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0103435, 0.049, -0.018)
+
+[node name="char_3_down_button" parent="." instance=ExtResource("1_b5atx")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.01, 0.057, -0.051)
+
+[node name="char_4_up_button" parent="." instance=ExtResource("1_b5atx")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.034, 0.057, 0.014)
+
+[node name="char_4" parent="." instance=ExtResource("1_7g160")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0338151, 0.049, -0.018)
+
+[node name="char_4_down_button" parent="." instance=ExtResource("1_b5atx")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.034, 0.057, -0.051)

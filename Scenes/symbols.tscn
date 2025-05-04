@@ -1,0 +1,50 @@
+[gd_scene load_steps=6 format=4 uid="uid://d2csij7x06lo7"]
+
+[ext_resource type="Script" uid="uid://bh44it2fa7064" path="res://Scripts/symbols.gd" id="1_hvd13"]
+[ext_resource type="Script" uid="uid://bggrlypqi73ds" path="res://Scripts/select_highlight.gd" id="2_hrlgm"]
+[ext_resource type="Material" uid="uid://cjlgh3vgi2yqn" path="res://outline_and_selection/outline_small.tres" id="3_hrlgm"]
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_qavv1"]
+_surfaces = [{
+"aabb": AABB(-0.02, -0.025, -0.02, 0.04, 0.05, 0.04),
+"attribute_data": PackedByteArray("AACAPwAAgD8AAIA/AAAAAAAAAAAAAAAAAACAPwAAgD8AAIA/AAAAAAAAAAAAAAAAAACAPwAAgD8AAIA/AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAPwAAgD8AAIA/AACAPwAAgD8AAIA/AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAPwAAgD8AAIA/AAAAAAAAAAAAAAAAAACAPwAAgD8AAIA/AAAAAAAAAAAAAAAAAACAPwAAgD8AAIA/AACAPwAAgD8AAIA/AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAPwAAgD8AAIA/AACAPwAAgD8AAIA/AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAPwAAgD8AAIA/"),
+"format": 34359738391,
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 36,
+"vertex_data": PackedByteArray("CtejvM3MzLwK16M8CtejvM3MzLwK16O8CtejvM3MzDwK16O8CtejPM3MzLwK16O8CtejvM3MzLwK16O8CtejvM3MzLwK16M8CtejvM3MzDwK16O8CtejvM3MzLwK16O8CtejPM3MzLwK16O8CtejvM3MzDwK16O8CtejvM3MzDwK16M8CtejvM3MzLwK16M8CtejvM3MzLwK16M8CtejvM3MzDwK16M8CtejPM3MzDwK16M8CtejPM3MzDwK16M8CtejvM3MzDwK16M8CtejvM3MzDwK16O8CtejvM3MzLwK16M8CtejPM3MzLwK16M8CtejPM3MzLwK16O8CtejPM3MzDwK16M8CtejPM3MzLwK16M8CtejvM3MzLwK16M8CtejPM3MzLwK16O8CtejPM3MzLwK16M8CtejPM3MzDwK16M8CtejPM3MzLwK16O8CtejPM3MzDwK16O8CtejvM3MzDwK16O8CtejvM3MzDwK16O8CtejPM3MzDwK16O8CtejPM3MzDwK16M8CtejPM3MzDwK16M8CtejPM3MzDwK16O8CtejPM3MzLwK16O8AAD/f/9//n8AAP9//3/+fwAA/3//f/5//38AAP//AAD/fwAA//8AAP9/AAD//wAA/////wAA/z//////AAD/P/////8AAP8/AAD/f/9//n8AAP9//3/+fwAA/3//f/5//3//fwAA/z//f/9/AAD/P/9//38AAP8//3//////AAD/f/////8AAP9//////wAA/38AAP//AAD/fwAA//8AAP9/AAD//wAA/3//fwAA/z//f/9/AAD/P/9//38AAP8/////f/9//n////9//3/+f////3//f/5//////wAA/z//////AAD/P/////8AAP8//3//////AAD/f/////8AAP9//////wAA////f/9//n////9//3/+f////3//f/5/")
+}]
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_brbxo"]
+data = PackedVector3Array(-0.02, -0.025, 0.02, -0.02, -0.025, -0.02, -0.02, 0.025, -0.02, 0.02, -0.025, -0.02, -0.02, -0.025, -0.02, -0.02, -0.025, 0.02, -0.02, 0.025, -0.02, -0.02, -0.025, -0.02, 0.02, -0.025, -0.02, -0.02, 0.025, -0.02, -0.02, 0.025, 0.02, -0.02, -0.025, 0.02, -0.02, -0.025, 0.02, -0.02, 0.025, 0.02, 0.02, 0.025, 0.02, 0.02, 0.025, 0.02, -0.02, 0.025, 0.02, -0.02, 0.025, -0.02, -0.02, -0.025, 0.02, 0.02, -0.025, 0.02, 0.02, -0.025, -0.02, 0.02, 0.025, 0.02, 0.02, -0.025, 0.02, -0.02, -0.025, 0.02, 0.02, -0.025, -0.02, 0.02, -0.025, 0.02, 0.02, 0.025, 0.02, 0.02, -0.025, -0.02, 0.02, 0.025, -0.02, -0.02, 0.025, -0.02, -0.02, 0.025, -0.02, 0.02, 0.025, -0.02, 0.02, 0.025, 0.02, 0.02, 0.025, 0.02, 0.02, 0.025, -0.02, 0.02, -0.025, -0.02)
+
+[node name="Node3D" type="Node3D"]
+script = ExtResource("1_hvd13")
+
+[node name="Symbols_button" type="MeshInstance3D" parent="." node_paths=PackedStringArray("body")]
+mesh = SubResource("ArrayMesh_qavv1")
+script = ExtResource("2_hrlgm")
+outline_material = ExtResource("3_hrlgm")
+body = NodePath("StaticBody3D")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Symbols_button"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Symbols_button/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_brbxo")
+
+[node name="Label3D" type="Label3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0.0292481, 0.00490164)
+pixel_size = 0.001
+text = "b"
+font_size = 28
+outline_size = 1
+
+[node name="status" type="CSGBox3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0116838, -0.0143876)
+size = Vector3(0.03, 0.03, 0.005)
+
+[connection signal="input_event" from="Symbols_button/StaticBody3D" to="." method="_on_static_body_3d_input_event"]
+[connection signal="mouse_entered" from="Symbols_button/StaticBody3D" to="." method="_on_static_body_3d_mouse_entered"]
+[connection signal="mouse_exited" from="Symbols_button/StaticBody3D" to="." method="_on_static_body_3d_mouse_exited"]

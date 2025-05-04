@@ -1,10 +1,33 @@
-[gd_scene load_steps=2 format=3 uid="uid://c24gibja6kj5i"]
+[gd_scene load_steps=3 format=3 uid="uid://c24gibja6kj5i"]
 
-[ext_resource type="Script" uid="uid://d0c23pvnixauk" path="res://Scripts/csg_box_3d.gd" id="1_jsdjs"]
+[ext_resource type="Script" uid="uid://sbrw1lwljb20" path="res://Scripts/timer_block.gd" id="1_i8vo6"]
+
+[sub_resource type="GDScript" id="GDScript_76wus"]
+script/source = "extends CSGBox3D
+
+@onready var wireScene = preload(\"res://Scenes/wires.tscn\")
+
+#func  _ready() -> void:
+	#var wire = wireScene.instantiate()
+	#add_child(wire)
+	#wire.position = Vector3(0, 0.1, 0)
+"
 
 [node name="Node3D" type="Node3D"]
+script = ExtResource("1_i8vo6")
 
 [node name="CSGBox3D" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.69637e-05, -1.49012e-08, -0.000497341)
-size = Vector3(0.23, 0.2, 0.21)
-script = ExtResource("1_jsdjs")
+size = Vector3(0.13, 0.14, 0.12)
+script = SubResource("GDScript_76wus")
+
+[node name="Label3D" type="Label3D" parent="CSGBox3D"]
+unique_name_in_owner = true
+transform = Transform3D(-1, 8.74228e-08, 0, 3.82137e-15, 4.37114e-08, 1, 8.74228e-08, 1, -4.37114e-08, 0, 0.0719864, 0)
+pixel_size = 0.001
+modulate = Color(0, 0, 0, 1)
+text = "03:00"
+outline_size = 0
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 183.0

@@ -1,0 +1,40 @@
+[gd_scene load_steps=5 format=4 uid="uid://c6tpw5c20sfck"]
+
+[ext_resource type="Script" uid="uid://bggrlypqi73ds" path="res://Scripts/select_highlight.gd" id="1_xfn36"]
+[ext_resource type="Material" uid="uid://cjlgh3vgi2yqn" path="res://outline_and_selection/outline_small.tres" id="2_mfc1d"]
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_5cx0i"]
+_surfaces = [{
+"aabb": AABB(-0.024, -0.025, -0.0125, 0.048, 0.05, 0.025),
+"attribute_data": PackedByteArray("AACAPwAAgD8AAIA/AAAAAAAAAAAAAAAAAACAPwAAgD8AAIA/AAAAAAAAAAAAAAAAAACAPwAAgD8AAIA/AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAPwAAgD8AAIA/AACAPwAAgD8AAIA/AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAPwAAgD8AAIA/AAAAAAAAAAAAAAAAAACAPwAAgD8AAIA/AAAAAAAAAAAAAAAAAACAPwAAgD8AAIA/AACAPwAAgD8AAIA/AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAPwAAgD8AAIA/AACAPwAAgD8AAIA/AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAPwAAgD8AAIA/"),
+"format": 34359738391,
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 36,
+"vertex_data": PackedByteArray("ppvEvM3MzLzNzEw8ppvEvM3MzLzNzEy8ppvEvM3MzDzNzEy8ppvEPM3MzLzNzEy8ppvEvM3MzLzNzEy8ppvEvM3MzLzNzEw8ppvEvM3MzDzNzEy8ppvEvM3MzLzNzEy8ppvEPM3MzLzNzEy8ppvEvM3MzDzNzEy8ppvEvM3MzDzNzEw8ppvEvM3MzLzNzEw8ppvEvM3MzLzNzEw8ppvEvM3MzDzNzEw8ppvEPM3MzDzNzEw8ppvEPM3MzDzNzEw8ppvEvM3MzDzNzEw8ppvEvM3MzDzNzEy8ppvEvM3MzLzNzEw8ppvEPM3MzLzNzEw8ppvEPM3MzLzNzEy8ppvEPM3MzDzNzEw8ppvEPM3MzLzNzEw8ppvEvM3MzLzNzEw8ppvEPM3MzLzNzEy8ppvEPM3MzLzNzEw8ppvEPM3MzDzNzEw8ppvEPM3MzLzNzEy8ppvEPM3MzDzNzEy8ppvEvM3MzDzNzEy8ppvEvM3MzDzNzEy8ppvEPM3MzDzNzEy8ppvEPM3MzDzNzEw8ppvEPM3MzDzNzEw8ppvEPM3MzDzNzEy8ppvEPM3MzLzNzEy8AAD/f/9//n8AAP9//3/+fwAA/3//f/5//38AAP//AAD/fwAA//8AAP9/AAD//wAA/////wAA/z//////AAD/P/////8AAP8/AAD/f/9//n8AAP9//3/+fwAA/3//f/5//3//fwAA/z//f/9/AAD/P/9//38AAP8//3//////AAD/f/////8AAP9//////wAA/38AAP//AAD/fwAA//8AAP9/AAD//wAA/3//fwAA/z//f/9/AAD/P/9//38AAP8/////f/9//n////9//3/+f////3//f/5//////wAA/z//////AAD/P/////8AAP8//3//////AAD/f/////8AAP9//////wAA////f/9//n////9//3/+f////3//f/5/")
+}]
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_5cx0i"]
+data = PackedVector3Array(-0.024, -0.025, 0.0125, -0.024, -0.025, -0.0125, -0.024, 0.025, -0.0125, 0.024, -0.025, -0.0125, -0.024, -0.025, -0.0125, -0.024, -0.025, 0.0125, -0.024, 0.025, -0.0125, -0.024, -0.025, -0.0125, 0.024, -0.025, -0.0125, -0.024, 0.025, -0.0125, -0.024, 0.025, 0.0125, -0.024, -0.025, 0.0125, -0.024, -0.025, 0.0125, -0.024, 0.025, 0.0125, 0.024, 0.025, 0.0125, 0.024, 0.025, 0.0125, -0.024, 0.025, 0.0125, -0.024, 0.025, -0.0125, -0.024, -0.025, 0.0125, 0.024, -0.025, 0.0125, 0.024, -0.025, -0.0125, 0.024, 0.025, 0.0125, 0.024, -0.025, 0.0125, -0.024, -0.025, 0.0125, 0.024, -0.025, -0.0125, 0.024, -0.025, 0.0125, 0.024, 0.025, 0.0125, 0.024, -0.025, -0.0125, 0.024, 0.025, -0.0125, -0.024, 0.025, -0.0125, -0.024, 0.025, -0.0125, 0.024, 0.025, -0.0125, 0.024, 0.025, 0.0125, 0.024, 0.025, 0.0125, 0.024, 0.025, -0.0125, 0.024, -0.025, -0.0125)
+
+[node name="Node3D" type="Node3D"]
+
+[node name="CSGBakedMeshInstance3D" type="MeshInstance3D" parent="." node_paths=PackedStringArray("body")]
+transform = Transform3D(0.95, 0, 0, 0, 0.95, 0, 0, 0, 0.95, 0, 0, 0)
+mesh = SubResource("ArrayMesh_5cx0i")
+script = ExtResource("1_xfn36")
+outline_material = ExtResource("2_mfc1d")
+body = NodePath("StaticBody3D")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="CSGBakedMeshInstance3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CSGBakedMeshInstance3D/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_5cx0i")
+
+[node name="Label3D" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0.0263001, 0)
+pixel_size = 0.0005
+modulate = Color(0, 0, 0, 1)
+text = "bla"
+font_size = 20
+outline_size = 0

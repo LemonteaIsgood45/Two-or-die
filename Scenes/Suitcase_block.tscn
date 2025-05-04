@@ -1,10 +1,19 @@
 [gd_scene load_steps=2 format=3 uid="uid://cy1yprb1fcpyi"]
 
-[ext_resource type="Script" uid="uid://d0c23pvnixauk" path="res://Scripts/csg_box_3d.gd" id="1_8nvdj"]
+[sub_resource type="GDScript" id="GDScript_76wus"]
+script/source = "extends CSGBox3D
+
+@onready var wireScene = preload(\"res://Scenes/wires.tscn\")
+
+#func  _ready() -> void:
+	#var wire = wireScene.instantiate()
+	#add_child(wire)
+	#wire.position = Vector3(0, 0.1, 0)
+"
 
 [node name="Node3D" type="Node3D"]
 
 [node name="CSGBox3D" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.69637e-05, -1.49012e-08, -0.000497341)
-size = Vector3(0.23, 0.2, 0.21)
-script = ExtResource("1_8nvdj")
+size = Vector3(0.13, 0.14, 0.12)
+script = SubResource("GDScript_76wus")

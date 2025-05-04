@@ -15,9 +15,22 @@ run/main_scene="res://Scenes/game.tscn"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[autoload]
+
+GameState="*res://Scripts/GameState.gd"
+
+[display]
+
+window/stretch/mode="canvas_items"
+
 [dotnet]
 
 project/assembly_name="Two or die"
+
+[global_group]
+
+clickable=""
+hoverable=""
 
 [rendering]
 

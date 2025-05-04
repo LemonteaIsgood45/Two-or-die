@@ -1,10 +1,51 @@
-[gd_scene load_steps=3 format=3 uid="uid://dyydrbgiya60v"]
+[gd_scene load_steps=4 format=3 uid="uid://dyydrbgiya60v"]
 
+[ext_resource type="Script" uid="uid://pt1qy4c0lhsn" path="res://Scripts/bomb.gd" id="1_2fiif"]
 [ext_resource type="PackedScene" uid="uid://dgrk4ge7ybanv" path="res://Assets/suitcase_with_combination_lock.glb" id="1_yx723"]
-[ext_resource type="Script" uid="uid://bwvqbp6bva2xn" path="res://Scripts/Suitcase.gd" id="2_kdyat"]
+
+[sub_resource type="GDScript" id="GDScript_kdyat"]
+script/source = "extends Node3D
+
+@onready var block1Scene = load(\"res://Scenes/Suitcase_block.tscn\")
+@onready var block2Scene = load(\"res://Scenes/Suitcase_block.tscn\")
+@onready var block3Scene = load(\"res://Scenes/Suitcase_block.tscn\")
+@onready var block4Scene = load(\"res://Scenes/Suitcase_block.tscn\")
+@onready var block5Scene = load(\"res://Scenes/Suitcase_block.tscn\")
+@onready var block6Scene = load(\"res://Scenes/Suitcase_block.tscn\")
+
+@onready var timerBlock = load(\"res://Scenes/timer_block.tscn\")
+
+var block1Pos = Vector3(0.25, 0, 0.12)
+var block2Pos = Vector3(0, 0, 0.12)
+var block3Pos = Vector3(-0.25, 0, 0.12)
+var block4Pos = Vector3(0.25, 0, -0.12)
+var block5Pos = Vector3(0, 0, -0.12)
+var block6Pos = Vector3(-0.25, 0, -0.12)
+
+func  _ready() -> void:
+	var block1 = timerBlock.instantiate()
+	add_child(block1)
+	var block2 = block2Scene.instantiate()
+	add_child(block2)
+	var block3 = block2Scene.instantiate()
+	add_child(block3)
+	var block4 = block1Scene.instantiate()
+	add_child(block4)
+	var block5 = block1Scene.instantiate()
+	add_child(block5)
+	var block6 = block1Scene.instantiate()
+	add_child(block6)
+	block1.position = block1Pos
+	block2.position = block2Pos
+	block3.position = block3Pos
+	block4.position = block4Pos
+	block5.position = block5Pos
+	block6.position = block6Pos
+"
 
 [node name="Bomb" type="Node3D"]
+script = ExtResource("1_2fiif")
 
 [node name="Suitcase" parent="." instance=ExtResource("1_yx723")]
 transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0, 0, 0)
-script = ExtResource("2_kdyat")
+script = SubResource("GDScript_kdyat")
