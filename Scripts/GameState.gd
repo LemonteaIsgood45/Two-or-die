@@ -3,7 +3,7 @@ extends Node3D
 var rng: RandomNumberGenerator
 
 
-var current_mode: GameMode = GameMode.MENU
+var current_mode: GameMode = GameMode.HOME
 
 var player_name
 
@@ -12,7 +12,7 @@ var correct_symbol
 
 #MODE
 
-enum GameMode { MENU, WAITING, PLAYING, PAUSED, GAME_OVER }
+enum GameMode { HOME, WAITING, PLAYING, SETTING, GAME_END }
 
 signal mode_changed(new_mode)
 
@@ -26,7 +26,7 @@ func is_mode(mode: GameMode) -> bool:
 
 #Wires
 
-var wire_colors = [Color.RED, Color.BLUE, Color.YELLOW]
+var wire_colors = [Color.RED, Color.BLUE, Color.YELLOW, Color.WHITE, Color.GREEN]
 
 func generate_wires():
 	var total_wires = randi_range(4, 7)
@@ -47,3 +47,41 @@ func generate_wires():
 		}
 		wires.append(wire)
 	return wires
+	
+# SYMBOLS
+
+func generate_symbols():
+	var greek_symbols = [
+		'α', 'β', 'γ', 'δ', 'ε', 'ζ', 'η', 'θ', 'ι', 'κ', 'λ', 'μ', 'ν', 'ξ', 'ο', 'π', 'ρ', 'σ', 'τ', 'υ', 'φ', 'χ', 'ψ', 'ω',
+		'ϐ', 'ϑ', 'ϒ', 'ϓ', 'ϔ', 'ϕ', 'ϖ', 'ϗ',
+		'Ͱ', 'ͱ', 'Ϙ', 'ϙ', 'Ϛ', 'ϛ', 'Ϝ', 'ϝ', 'Ϟ', 'ϟ',
+		'Ϡ', 'ϡ', 'ϰ', 'ϱ', 'ϲ', 'ϳ'
+	]
+	
+	var picked_symbols = []
+	while picked_symbols.size() < 4:
+		var symbol = greek_symbols[randi() % greek_symbols.size()]
+		if symbol not in picked_symbols:
+			picked_symbols.append(symbol)
+	
+	picked_symbols.shuffle()
+	
+	var result = []
+	for i in range(picked_symbols.size()):
+		result.append({ "index": i, "symbol": picked_symbols[i] })
+	
+	return result
+
+# 4 character block
+
+func generate_4_character_block() -> Array:
+	var alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+	var chosen := []
+	randomize()
+
+	while chosen.size() < 4:
+		var letter = alphabet[randi() % alphabet.length()]
+		if letter not in chosen:
+			chosen.append(letter)
+	
+	return chosen

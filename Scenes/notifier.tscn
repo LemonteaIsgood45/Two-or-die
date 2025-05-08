@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://btdgpsl5axthc"]
+
+[ext_resource type="Script" uid="uid://btjvvb4bgnrg7" path="res://Scripts/notifier.gd" id="1_7w5jy"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7w5jy"]
+
+[node name="Node3D" type="Node3D"]
+script = ExtResource("1_7w5jy")
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="."]
+radius = 0.015
+height = 0.01
+sides = 32
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.00949208, 0)
+radius = 0.01
+radial_segments = 20
+rings = 10
+material = SubResource("StandardMaterial3D_7w5jy")

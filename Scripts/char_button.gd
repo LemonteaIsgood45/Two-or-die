@@ -4,6 +4,8 @@ var original_position: Vector3
 var is_pressed := false
 var is_hovered := false
 
+var last_pressed := false
+
 func _ready() -> void:
 	original_position = $".".position
 

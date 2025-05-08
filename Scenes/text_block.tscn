@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://bbqlhiykmxsha"]
 
 [ext_resource type="PackedScene" uid="uid://c6tpw5c20sfck" path="res://Scenes/text_button.tscn" id="1_smxsm"]
-[ext_resource type="Script" uid="uid://dsbknfot4fvdl" path="res://Scripts/text_block.gd" id="1_wnvfk"]
+[ext_resource type="Script" uid="uid://dsbknfot4fvdl" path="res://Scripts/block/text_block.gd" id="1_wnvfk"]
 
 [node name="Node3D" type="Node3D"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)

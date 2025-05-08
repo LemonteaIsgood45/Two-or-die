@@ -1,19 +1,14 @@
-[gd_scene load_steps=2 format=3 uid="uid://cy1yprb1fcpyi"]
-
-[sub_resource type="GDScript" id="GDScript_76wus"]
-script/source = "extends CSGBox3D
-
-@onready var wireScene = preload(\"res://Scenes/wires.tscn\")
-
-#func  _ready() -> void:
-	#var wire = wireScene.instantiate()
-	#add_child(wire)
-	#wire.position = Vector3(0, 0.1, 0)
-"
+[gd_scene format=3 uid="uid://cy1yprb1fcpyi"]
 
 [node name="Node3D" type="Node3D"]
 
 [node name="CSGBox3D" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.69637e-05, -1.49012e-08, -0.000497341)
 size = Vector3(0.13, 0.14, 0.12)
-script = SubResource("GDScript_76wus")
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="CSGBox3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0621781, 1.49012e-08, 0.0644191)
+operation = 2
+radius = 0.04
+height = 0.141
+sides = 32

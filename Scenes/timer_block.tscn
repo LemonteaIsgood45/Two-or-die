@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://c24gibja6kj5i"]
 
-[ext_resource type="Script" uid="uid://sbrw1lwljb20" path="res://Scripts/timer_block.gd" id="1_i8vo6"]
+[ext_resource type="Script" uid="uid://sbrw1lwljb20" path="res://Scripts/block/timer_block.gd" id="1_i8vo6"]
 
 [sub_resource type="GDScript" id="GDScript_76wus"]
 script/source = "extends CSGBox3D
