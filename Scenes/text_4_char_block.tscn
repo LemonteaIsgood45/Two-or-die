@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://obidvxexgq5p"]
+[gd_scene load_steps=6 format=3 uid="uid://obidvxexgq5p"]
 
 [ext_resource type="Script" uid="uid://da7rfvg4f2hwn" path="res://Scripts/block/text_4_char_block.gd" id="1_0tc65"]
 [ext_resource type="PackedScene" uid="uid://en11w86wgnkx" path="res://Scenes/text_char.tscn" id="1_7g160"]
 [ext_resource type="PackedScene" uid="uid://c7x28ypoxwuwn" path="res://Scenes/char_button.tscn" id="1_b5atx"]
 [ext_resource type="PackedScene" uid="uid://btdgpsl5axthc" path="res://Scenes/notifier.tscn" id="3_3332x"]
+[ext_resource type="PackedScene" uid="uid://btq7w430qgdow" path="res://Scenes/push_4_char_block.tscn" id="5_uvqhc"]
 
 [node name="Node3D" type="Node3D"]
 script = ExtResource("1_0tc65")
@@ -64,4 +65,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0338151, 0.049, -0.018)
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.034, 0.057, -0.051)
 
 [node name="state" parent="." instance=ExtResource("3_3332x")]
+unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.046728, 0.0582517, 0.0460316)
+
+[node name="push_button" parent="." instance=ExtResource("5_uvqhc")]
+unique_name_in_owner = true

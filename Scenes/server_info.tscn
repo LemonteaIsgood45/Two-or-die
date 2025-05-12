@@ -1,0 +1,28 @@
+[gd_scene load_steps=2 format=3 uid="uid://kxnmtxq4g8rl"]
+
+[ext_resource type="Script" uid="uid://dfj5qj4fpu0" path="res://Scripts/server_info.gd" id="1_o1shl"]
+
+[node name="ServerInfo" type="HBoxContainer"]
+script = ExtResource("1_o1shl")
+
+[node name="Name" type="Label" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Somthing"
+
+[node name="IP" type="Label" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "192.1.0.255"
+
+[node name="PlayerCount" type="Label" parent="."]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+text = "1"
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Join"
+
+[connection signal="button_down" from="Button" to="." method="_on_button_button_down"]

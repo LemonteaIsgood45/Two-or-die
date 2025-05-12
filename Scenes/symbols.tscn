@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=4 uid="uid://d2csij7x06lo7"]
 
-[ext_resource type="Script" uid="uid://bh44it2fa7064" path="res://Scripts/symbols.gd" id="1_hvd13"]
+[ext_resource type="Script" uid="uid://bh44it2fa7064" path="res://Scripts/block/symbols.gd" id="1_hvd13"]
 [ext_resource type="Script" uid="uid://bggrlypqi73ds" path="res://Scripts/select_highlight.gd" id="2_hrlgm"]
 [ext_resource type="Material" uid="uid://cjlgh3vgi2yqn" path="res://outline_and_selection/outline_small.tres" id="3_hrlgm"]
 

@@ -2,17 +2,18 @@ extends Node3D
 
 var rng: RandomNumberGenerator
 
-
 var current_mode: GameMode = GameMode.HOME
 
-var player_name
+var players = {}
+
+var role = "Defuser"
 
 var time_pressed_number
 var correct_symbol
 
 #MODE
 
-enum GameMode { HOME, WAITING, PLAYING, SETTING, GAME_END }
+enum GameMode { HOME, WAITING, PLAYING, SETTING, WIN, LOSE }
 
 signal mode_changed(new_mode)
 
@@ -23,6 +24,10 @@ func set_mode(new_mode: GameMode):
 
 func is_mode(mode: GameMode) -> bool:
 	return current_mode == mode
+
+@rpc("any_peer", "call_local")
+func assign_role(_role):
+	role = _role
 
 #Wires
 

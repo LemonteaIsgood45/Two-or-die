@@ -1,0 +1,59 @@
+[gd_scene load_steps=13 format=3 uid="uid://dy258a7bdre5b"]
+
+[ext_resource type="Script" uid="uid://d1jlekkbhbu2o" path="res://Scripts/world_audio_manager.gd" id="1_cilue"]
+[ext_resource type="AudioStream" uid="uid://dfpfbbf240ky8" path="res://Assets/Audio/background-music-soft-calm-333111.mp3" id="2_33aiw"]
+[ext_resource type="PackedScene" uid="uid://dildxyuvn4kgw" path="res://Scenes/wires.tscn" id="2_skfha"]
+[ext_resource type="AudioStream" uid="uid://kol12vbw23m5" path="res://Assets/Audio/energetic-upbeat-background-music-333747.mp3" id="3_5a1qp"]
+[ext_resource type="AudioStream" uid="uid://vlc7iv5b2qwa" path="res://Assets/Audio/vlogs-background-music-333116.mp3" id="4_7y25y"]
+[ext_resource type="AudioStream" uid="uid://det2ak7hxaqrg" path="res://Assets/Audio/LOSE/violin-lose-4-185125.mp3" id="5_7y25y"]
+[ext_resource type="AudioStream" uid="uid://dcqvik12fec5v" path="res://Assets/Audio/LOSE/metal-cage-smells-of-nothing-27353.mp3" id="6_skfha"]
+[ext_resource type="AudioStream" uid="uid://rji38fdghoo5" path="res://Assets/Audio/LOSE/that-game-arcade-236111.mp3" id="6_tmudi"]
+
+[sub_resource type="AudioStreamPlaylist" id="AudioStreamPlaylist_cilue"]
+shuffle = true
+stream_count = 3
+stream_0 = ExtResource("2_33aiw")
+stream_1 = ExtResource("3_5a1qp")
+stream_2 = ExtResource("4_7y25y")
+
+[sub_resource type="AudioStreamPlaylist" id="AudioStreamPlaylist_skfha"]
+loop = false
+stream_count = 3
+stream_0 = ExtResource("5_7y25y")
+stream_1 = ExtResource("6_skfha")
+stream_2 = ExtResource("6_tmudi")
+
+[sub_resource type="AudioStreamInteractive" id="AudioStreamInteractive_cilue"]
+clip_count = 2
+clip_0/name = &"NORMAL"
+clip_0/stream = SubResource("AudioStreamPlaylist_cilue")
+clip_0/auto_advance = 0
+clip_1/name = &"LOSE"
+clip_1/stream = SubResource("AudioStreamPlaylist_skfha")
+clip_1/auto_advance = 0
+
+[sub_resource type="AudioStreamInteractive" id="AudioStreamInteractive_tmudi"]
+clip_count = 4
+clip_0/name = &"Clicking"
+clip_0/auto_advance = 0
+clip_1/name = &"WireCutting"
+clip_1/auto_advance = 0
+clip_2/name = &"ButtonPressed"
+clip_2/auto_advance = 0
+clip_3/name = &"Opening"
+clip_3/auto_advance = 0
+
+[node name="WorldAudioManager" type="Node" node_paths=PackedStringArray("bg_music_player", "player_audio_stream")]
+script = ExtResource("1_cilue")
+bg_music_player = NodePath("BackgroundMusic")
+player_audio_stream = NodePath("PlayerInteractionPlayer")
+specific_scene_instance = ExtResource("2_skfha")
+
+[node name="BackgroundMusic" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamInteractive_cilue")
+volume_db = -20.0
+autoplay = true
+bus = &"music"
+
+[node name="PlayerInteractionPlayer" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamInteractive_tmudi")

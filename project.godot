@@ -11,13 +11,14 @@ config_version=5
 [application]
 
 config/name="Two or die"
-run/main_scene="res://Scenes/game.tscn"
+run/main_scene="uid://c5mmpveu8us7e"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="res://icon.svg"
 
 [autoload]
 
 GameState="*res://Scripts/GameState.gd"
+GlobalAudio="*res://Scripts/global_audio.gd"
 
 [display]
 

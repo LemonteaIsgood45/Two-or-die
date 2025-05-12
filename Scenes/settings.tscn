@@ -1,0 +1,84 @@
+[gd_scene load_steps=2 format=3 uid="uid://d3cxcocwotpbn"]
+
+[ext_resource type="Script" uid="uid://dmofqe73q6pas" path="res://Scripts/settings.gd" id="1_4geyq"]
+
+[node name="settings" type="VBoxContainer"]
+offset_left = 78.0
+offset_top = 182.0
+offset_right = 579.0
+offset_bottom = 286.0
+theme_override_constants/separation = 10
+script = ExtResource("1_4geyq")
+
+[node name="Volumn" type="HBoxContainer" parent="."]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Button" type="Button" parent="Volumn"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 28
+text = "Volumn: "
+alignment = 0
+
+[node name="HSlider" type="HSlider" parent="Volumn"]
+custom_minimum_size = Vector2(300, 44)
+layout_mode = 2
+size_flags_horizontal = 10
+min_value = -30.0
+max_value = 0.0
+value = -15.0
+
+[node name="Music" type="HBoxContainer" parent="."]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Button" type="Button" parent="Music"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 28
+text = "Music: "
+alignment = 0
+
+[node name="HSlider" type="HSlider" parent="Music"]
+custom_minimum_size = Vector2(300, 44)
+layout_mode = 2
+size_flags_horizontal = 10
+min_value = -40.0
+max_value = 0.0
+
+[node name="Sfx" type="HBoxContainer" parent="."]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Button" type="Button" parent="Sfx"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 28
+text = "Sound effect: "
+alignment = 0
+
+[node name="HSlider" type="HSlider" parent="Sfx"]
+custom_minimum_size = Vector2(300, 44)
+layout_mode = 2
+size_flags_horizontal = 10
+min_value = -40.0
+max_value = 0.0
+
+[node name="VoiceChat" type="HBoxContainer" parent="."]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Button" type="Button" parent="VoiceChat"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 28
+text = "Voice chat: "
+alignment = 0
+
+[node name="HSlider" type="HSlider" parent="VoiceChat"]
+custom_minimum_size = Vector2(300, 44)
+layout_mode = 2
+size_flags_horizontal = 10
+min_value = -40.0
+max_value = 0.0

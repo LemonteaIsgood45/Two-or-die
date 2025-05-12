@@ -1,8 +1,13 @@
-[gd_scene load_steps=8 format=4 uid="uid://c5mmpveu8us7e"]
+[gd_scene load_steps=12 format=4 uid="uid://c5mmpveu8us7e"]
 
 [ext_resource type="Texture2D" uid="uid://c4g8aqt2tqmjj" path="res://Assets/Textures/kenney_prototype_textures/green/texture_08.png" id="1_28flt"]
+[ext_resource type="Script" uid="uid://bqh4arkvwm3tr" path="res://Scripts/main.gd" id="1_opfnp"]
 [ext_resource type="PackedScene" uid="uid://dgrk4ge7ybanv" path="res://Assets/suitcase_with_combination_lock.glb" id="2_48xlc"]
 [ext_resource type="Script" uid="uid://w0lymgke7w5c" path="res://Scripts/main_menu_suitcase.gd" id="3_1ehe0"]
+[ext_resource type="PackedScene" uid="uid://bwhb637c72vsf" path="res://Scenes/multiplayerScene.tscn" id="4_ce3w2"]
+[ext_resource type="Script" uid="uid://fa87i11loluk" path="res://Scripts/menu_ui.gd" id="5_cp0ys"]
+[ext_resource type="PackedScene" uid="uid://dy258a7bdre5b" path="res://Scenes/world_audio_manager.tscn" id="5_n45e2"]
+[ext_resource type="PackedScene" uid="uid://d3cxcocwotpbn" path="res://Scenes/settings.tscn" id="6_yhxw7"]
 
 [sub_resource type="Environment" id="Environment_28flt"]
 background_mode = 1
@@ -25,31 +30,8 @@ _surfaces = [{
 "vertex_data": PackedByteArray("AABIwgAAAL8AAEhCAABIwgAAAL8AAEjCAABIwgAAAD8AAEjCAABIQgAAAL8AAEjCAABIwgAAAL8AAEjCAABIwgAAAL8AAEhCAABIwgAAAD8AAEjCAABIwgAAAL8AAEjCAABIQgAAAL8AAEjCAABIwgAAAD8AAEjCAABIwgAAAD8AAEhCAABIwgAAAL8AAEhCAABIwgAAAL8AAEhCAABIwgAAAD8AAEhCAABIQgAAAD8AAEhCAABIQgAAAD8AAEhCAABIwgAAAD8AAEhCAABIwgAAAD8AAEjCAABIwgAAAL8AAEhCAABIQgAAAL8AAEhCAABIQgAAAL8AAEjCAABIQgAAAD8AAEhCAABIQgAAAL8AAEhCAABIwgAAAL8AAEhCAABIQgAAAL8AAEjCAABIQgAAAL8AAEhCAABIQgAAAD8AAEhCAABIQgAAAL8AAEjCAABIQgAAAD8AAEjCAABIwgAAAD8AAEjCAABIwgAAAD8AAEjCAABIQgAAAD8AAEjCAABIQgAAAD8AAEhCAABIQgAAAD8AAEhCAABIQgAAAD8AAEjCAABIQgAAAL8AAEjCAAD/f/9//n8AAP9//3/+fwAA/3//f/5//38AAP//AAD/fwAA//8AAP9/AAD//wAA/////wAA/z//////AAD/P/////8AAP8/AAD/f/9//n8AAP9//3/+fwAA/3//f/5//3//fwAA/z//f/9/AAD/P/9//38AAP8//3//////AAD/f/////8AAP9//////wAA/38AAP//AAD/fwAA//8AAP9/AAD//wAA/3//fwAA/z//f/9/AAD/P/9//38AAP8/////f/9//n////9//3/+f////3//f/5//////wAA/z//////AAD/P/////8AAP8//3//////AAD/f/////8AAP9//////wAA////f/9//n////9//3/+f////3//f/5/")
 }]
 
-[sub_resource type="GDScript" id="GDScript_1ehe0"]
-script/source = "extends Control
-
-
-
-func _on_online_game_button_pressed() -> void:
-	pass # Replace with function body.
-
-func _on_lan_game_button_pressed() -> void:
-	pass # Replace with function body.
-
-func _on_setting_button_pressed() -> void:
-	%setting.show()
-
-func _on_setting_back_button_pressed() -> void:
-	%setting.hide()
-
-func _on_account_button_pressed() -> void:
-	pass # Replace with function body.
-
-func _on_exit_button_pressed() -> void:
-	get_tree().quit()
-"
-
 [node name="Node3D" type="Node3D"]
+script = ExtResource("1_opfnp")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_28flt")
@@ -82,7 +64,7 @@ offset_left = 10.0
 offset_top = 1.0
 offset_right = 1140.0
 offset_bottom = 652.0
-script = SubResource("GDScript_1ehe0")
+script = ExtResource("5_cp0ys")
 
 [node name="Label" type="Label" parent="Camera3D/MenuUI"]
 layout_mode = 0
@@ -131,9 +113,15 @@ theme_override_font_sizes/font_size = 28
 text = "EXIT"
 alignment = 0
 
-[node name="setting" type="ColorRect" parent="Camera3D/MenuUI"]
-unique_name_in_owner = true
+[node name="Setting" type="Control" parent="Camera3D/MenuUI"]
 visible = false
+anchors_preset = 0
+offset_right = 1141.0
+offset_bottom = 638.0
+
+[node name="setting" type="ColorRect" parent="Camera3D/MenuUI/Setting"]
+unique_name_in_owner = true
+z_index = 1
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -144,7 +132,8 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 0.894118)
 
-[node name="Label" type="Label" parent="Camera3D/MenuUI/setting"]
+[node name="Label" type="Label" parent="Camera3D/MenuUI/Setting/setting"]
+layout_mode = 0
 offset_left = 74.0
 offset_top = 54.0
 offset_right = 932.0
@@ -152,7 +141,7 @@ offset_bottom = 236.0
 theme_override_font_sizes/font_size = 80
 text = "SETTING"
 
-[node name="setting_back_button" type="Button" parent="Camera3D/MenuUI/setting"]
+[node name="setting_back_button" type="Button" parent="Camera3D/MenuUI/Setting/setting"]
 layout_mode = 0
 offset_left = 92.0
 offset_top = 493.0
@@ -162,44 +151,47 @@ theme_override_font_sizes/font_size = 28
 text = "BACK"
 alignment = 0
 
-[node name="settings" type="VBoxContainer" parent="Camera3D/MenuUI/setting"]
+[node name="settings" parent="Camera3D/MenuUI/Setting/setting" instance=ExtResource("6_yhxw7")]
 layout_mode = 0
-offset_left = 78.0
-offset_top = 182.0
-offset_right = 579.0
-offset_bottom = 286.0
-theme_override_constants/separation = 10
+offset_left = 74.0
+offset_top = 193.0
+offset_right = 577.0
+offset_bottom = 468.0
 
-[node name="sound" type="HBoxContainer" parent="Camera3D/MenuUI/setting/settings"]
-layout_mode = 2
-theme_override_constants/separation = 10
+[node name="LAN2" type="Control" parent="Camera3D/MenuUI"]
+visible = false
+anchors_preset = 0
+offset_right = 1143.0
+offset_bottom = 654.0
 
-[node name="Button" type="Button" parent="Camera3D/MenuUI/setting/settings/sound"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 28
-text = "SOUND:"
+[node name="LAN" type="ColorRect" parent="Camera3D/MenuUI/LAN2"]
+unique_name_in_owner = true
+z_index = 1
+layout_mode = 0
+offset_right = 1137.0
+offset_bottom = 652.0
+color = Color(0, 0, 0, 0.901961)
 
-[node name="Label" type="Label" parent="Camera3D/MenuUI/setting/settings/sound"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 28
-text = "ON"
+[node name="Control" parent="Camera3D/MenuUI/LAN2/LAN" instance=ExtResource("4_ce3w2")]
+z_index = 2
+layout_mode = 1
 
-[node name="volume" type="HBoxContainer" parent="Camera3D/MenuUI/setting/settings"]
-layout_mode = 2
-theme_override_constants/separation = 10
+[node name="LAN_back_button" type="Button" parent="Camera3D/MenuUI/LAN2/LAN"]
+z_index = 1
+layout_mode = 0
+offset_left = 92.0
+offset_top = 468.0
+offset_right = 284.0
+offset_bottom = 514.0
+theme_override_font_sizes/font_size = 24
+text = "BACK"
 
-[node name="Button" type="Button" parent="Camera3D/MenuUI/setting/settings/volume"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 28
-text = "VOLUMN:"
-
-[node name="HSlider" type="HSlider" parent="Camera3D/MenuUI/setting/settings/volume"]
-custom_minimum_size = Vector2(300, 44)
-layout_mode = 2
+[node name="WorldAudioManager" parent="." instance=ExtResource("5_n45e2")]
 
 [connection signal="pressed" from="Camera3D/MenuUI/main_menu_buttons/OnlineGameButton" to="Camera3D/MenuUI" method="_on_online_game_button_pressed"]
 [connection signal="pressed" from="Camera3D/MenuUI/main_menu_buttons/LanGameButton" to="Camera3D/MenuUI" method="_on_lan_game_button_pressed"]
 [connection signal="pressed" from="Camera3D/MenuUI/main_menu_buttons/SettingButton" to="Camera3D/MenuUI" method="_on_setting_button_pressed"]
 [connection signal="pressed" from="Camera3D/MenuUI/main_menu_buttons/AccountButton" to="Camera3D/MenuUI" method="_on_account_button_pressed"]
 [connection signal="pressed" from="Camera3D/MenuUI/main_menu_buttons/ExitButton" to="Camera3D/MenuUI" method="_on_exit_button_pressed"]
-[connection signal="pressed" from="Camera3D/MenuUI/setting/setting_back_button" to="Camera3D/MenuUI" method="_on_setting_back_button_pressed"]
+[connection signal="pressed" from="Camera3D/MenuUI/Setting/setting/setting_back_button" to="Camera3D/MenuUI" method="_on_setting_back_button_pressed"]
+[connection signal="button_down" from="Camera3D/MenuUI/LAN2/LAN/LAN_back_button" to="Camera3D/MenuUI" method="_on_lan_back_button_button_down"]

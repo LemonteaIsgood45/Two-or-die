@@ -1,0 +1,114 @@
+[gd_scene load_steps=4 format=3 uid="uid://cot0xf2bb73o4"]
+
+[ext_resource type="Script" uid="uid://pqpvu2n33t63" path="res://Scripts/lobby.gd" id="1_nvaej"]
+[ext_resource type="Texture2D" uid="uid://etkud1n40sim" path="res://Assets/Textures/kenney_prototype_textures/red/texture_13.png" id="2_u1o2k"]
+[ext_resource type="Texture2D" uid="uid://b0i2im4sh7874" path="res://Assets/Textures/kenney_prototype_textures/red/texture_12.png" id="3_avk8s"]
+
+[node name="Lobby" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_nvaej")
+
+[node name="StatusLabel" type="Label" parent="."]
+layout_mode = 0
+offset_left = 69.0
+offset_top = 175.0
+offset_right = 198.0
+offset_bottom = 198.0
+text = "Ready"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 49.0
+offset_top = 132.0
+offset_right = 268.0
+offset_bottom = 172.0
+theme_override_constants/separation = 10
+
+[node name="DefuserSpot" type="Button" parent="HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 14
+text = "Defuser"
+
+[node name="SwitchSpot" type="Button" parent="HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 14
+text = "Switch"
+
+[node name="InstructorSpot" type="Button" parent="HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 14
+text = "Instructor"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 45.0
+offset_top = 30.0
+offset_right = 272.0
+offset_bottom = 113.0
+theme_override_constants/separation = 30
+alignment = 1
+
+[node name="BoxContainer" type="BoxContainer" parent="HBoxContainer2"]
+custom_minimum_size = Vector2(90, 0)
+layout_mode = 2
+
+[node name="DefuserIcon" type="TextureRect" parent="HBoxContainer2/BoxContainer"]
+unique_name_in_owner = true
+visible = false
+custom_minimum_size = Vector2(90, 0)
+layout_mode = 2
+texture = ExtResource("2_u1o2k")
+expand_mode = 1
+
+[node name="BoxContainer2" type="BoxContainer" parent="HBoxContainer2"]
+custom_minimum_size = Vector2(90, 0)
+layout_mode = 2
+
+[node name="InstructorIcon" type="TextureRect" parent="HBoxContainer2/BoxContainer2"]
+unique_name_in_owner = true
+visible = false
+custom_minimum_size = Vector2(90, 0)
+layout_mode = 2
+texture = ExtResource("3_avk8s")
+expand_mode = 1
+
+[node name="DefuserLabel" type="Label" parent="."]
+layout_mode = 0
+offset_left = 73.0
+offset_top = 113.0
+offset_right = 127.0
+offset_bottom = 136.0
+theme_override_font_sizes/font_size = 14
+text = "Defuser"
+horizontal_alignment = 1
+
+[node name="InstructorLabel" type="Label" parent="."]
+layout_mode = 0
+offset_left = 184.0
+offset_top = 112.0
+offset_right = 252.0
+offset_bottom = 135.0
+theme_override_font_sizes/font_size = 14
+text = "Instructor"
+horizontal_alignment = 1
+
+[node name="Kick" type="Button" parent="."]
+offset_left = 94.0
+offset_top = 285.0
+offset_right = 197.0
+offset_bottom = 327.0
+theme_override_font_sizes/font_size = 20
+text = "Kick"
+
+[connection signal="pressed" from="HBoxContainer/DefuserSpot" to="." method="_on_defuser_spot_pressed"]
+[connection signal="pressed" from="HBoxContainer/SwitchSpot" to="." method="_on_switch_spot_pressed"]
+[connection signal="pressed" from="HBoxContainer/InstructorSpot" to="." method="_on_instructor_spot_pressed"]
+[connection signal="button_down" from="Kick" to="." method="_on_kick_button_down"]

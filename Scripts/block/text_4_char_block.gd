@@ -20,10 +20,16 @@ func _process(delta: float) -> void:
 	change_char(%char_4, $char_4_up_button, $char_4_down_button)
 	
 	if %char_1/Character.text == char_data[0] and %char_2/Character.text == char_data[1] and %char_3/Character.text == char_data[2]and %char_4/Character.text == char_data[3]:
-		finish = true
 		correct = true
-		$state.finish = finish
-		$state.correct = correct
+	else:
+		correct = false
+		
+	if %push_button.is_pressed == true and %push_button.last_pressed == false:
+		finish = true
+		%push_button.last_pressed = true
+		
+	%state.finish = finish
+	%state.correct = correct
 
 func change_char(char_node: Node, up_char: Node, down_char: Node) -> void:
 	var char_label = char_node.get_node("Character")

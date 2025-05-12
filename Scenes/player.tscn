@@ -1,4 +1,31 @@
-[gd_scene format=3 uid="uid://dscuet6tqgfp3"]
+[gd_scene load_steps=6 format=3 uid="uid://ya4qbtpxqj3o"]
 
-[node name="Camera3D" type="Camera3D"]
-transform = Transform3D(-0.933893, 0, -0.357553, 0, 1, 0, 0.357553, 0, -0.933893, -1.75097, 0.595466, 0.302069)
+[ext_resource type="Script" uid="uid://51hi6ow1rjyp" path="res://Scripts/player.gd" id="1_v0iea"]
+[ext_resource type="Script" uid="uid://dp44mslupssrl" path="res://Scripts/player_camera.gd" id="2_cvnsp"]
+[ext_resource type="Texture2D" uid="uid://qj75rkbjqe8y" path="res://Assets/Textures/kenney_prototype_textures/dark/texture_01.png" id="3_6t5aa"]
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_cvnsp"]
+properties/0/path = NodePath(".:rotation")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vgqql"]
+albedo_texture = ExtResource("3_6t5aa")
+
+[node name="Player" type="Node3D" node_paths=PackedStringArray("camera")]
+script = ExtResource("1_v0iea")
+camera = NodePath("Camera3D")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+script = ExtResource("2_cvnsp")
+
+[node name="RoleLabel" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_cvnsp")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+size = Vector3(0.5, 1, 0.2)
+material = SubResource("StandardMaterial3D_vgqql")

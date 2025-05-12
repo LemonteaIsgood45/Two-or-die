@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://dyydrbgiya60v"]
 
-[ext_resource type="Script" uid="uid://pt1qy4c0lhsn" path="res://Scripts/bomb.gd" id="1_2fiif"]
+[ext_resource type="Script" uid="uid://pt1qy4c0lhsn" path="res://Scripts/block/bomb.gd" id="1_2fiif"]
 [ext_resource type="PackedScene" uid="uid://dgrk4ge7ybanv" path="res://Assets/suitcase_with_combination_lock.glb" id="1_yx723"]
 
 [sub_resource type="GDScript" id="GDScript_kdyat"]

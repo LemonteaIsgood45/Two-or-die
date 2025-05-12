@@ -1,0 +1,54 @@
+[gd_scene load_steps=3 format=3 uid="uid://dmvh2ajt7nsoc"]
+
+[ext_resource type="Script" uid="uid://boeeaauyp64qo" path="res://Scripts/client.gd" id="1_cgmvo"]
+[ext_resource type="Script" uid="uid://cs34vb5jt2ct6" path="res://Scripts/server.gd" id="2_vh8u0"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Client" type="Node" parent="."]
+script = ExtResource("1_cgmvo")
+
+[node name="StartClient" type="Button" parent="."]
+layout_mode = 0
+offset_left = 148.0
+offset_top = 10.0
+offset_right = 241.0
+offset_bottom = 41.0
+text = "Start client"
+
+[node name="Server" type="Node" parent="."]
+script = ExtResource("2_vh8u0")
+
+[node name="StartServer" type="Button" parent="."]
+layout_mode = 0
+offset_left = 791.0
+offset_top = 9.0
+offset_right = 890.0
+offset_bottom = 40.0
+text = "Start server"
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 139.0
+offset_top = 67.0
+offset_right = 271.0
+offset_bottom = 98.0
+text = "sent test packet"
+
+[node name="Button2" type="Button" parent="."]
+layout_mode = 0
+offset_left = 778.0
+offset_top = 62.0
+offset_right = 909.0
+offset_bottom = 85.0
+
+[connection signal="button_down" from="StartClient" to="Client" method="_on_start_client_button_down"]
+[connection signal="button_down" from="StartServer" to="Server" method="_on_start_server_button_down"]
+[connection signal="button_down" from="Button" to="Client" method="_on_button_button_down"]
+[connection signal="button_down" from="Button2" to="Server" method="_on_button_2_button_down"]

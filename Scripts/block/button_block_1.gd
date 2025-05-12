@@ -4,12 +4,23 @@ var original_position: Vector3
 var is_pressed := false
 var is_hovered := false
 
+var finish := false
+var correct := false
+
+#var time
+#var label
+#var button_color
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	original_position = %Button.position
 	%Status.material_override = StandardMaterial3D.new()
 	update_label_text("Hello 3D!")
 	update_button_color(Color(0.2, 0.8, 0.4))  # Set initial color (greenish)
+
+func _process(delta: float) -> void:
+	%state.finish = finish
+	%state.correct = correct
 
 # Function to change the text of the Label3D
 func update_label_text(new_text: String):

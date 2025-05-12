@@ -1,0 +1,45 @@
+[gd_scene load_steps=6 format=4 uid="uid://btq7w430qgdow"]
+
+[ext_resource type="Script" uid="uid://bggrlypqi73ds" path="res://Scripts/select_highlight.gd" id="1_v6n12"]
+[ext_resource type="Script" uid="uid://yyb87np5vew7" path="res://Scripts/block/push_4_char_block.gd" id="1_xuc3y"]
+[ext_resource type="Material" uid="uid://cjlgh3vgi2yqn" path="res://outline_and_selection/outline_small.tres" id="2_xuc3y"]
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_6yas1"]
+_surfaces = [{
+"aabb": AABB(-0.03, -0.025, -0.01, 0.06, 0.05, 0.02),
+"attribute_data": PackedByteArray("AACAPwAAgD8AAIA/AAAAAAAAAAAAAAAAAACAPwAAgD8AAIA/AAAAAAAAAAAAAAAAAACAPwAAgD8AAIA/AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAPwAAgD8AAIA/AACAPwAAgD8AAIA/AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAPwAAgD8AAIA/AAAAAAAAAAAAAAAAAACAPwAAgD8AAIA/AAAAAAAAAAAAAAAAAACAPwAAgD8AAIA/AACAPwAAgD8AAIA/AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAPwAAgD8AAIA/AACAPwAAgD8AAIA/AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAPwAAgD8AAIA/"),
+"format": 34359738391,
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 36,
+"vertex_data": PackedByteArray("j8L1vM3MzLwK1yM8j8L1vM3MzLwK1yO8j8L1vM3MzDwK1yO8j8L1PM3MzLwK1yO8j8L1vM3MzLwK1yO8j8L1vM3MzLwK1yM8j8L1vM3MzDwK1yO8j8L1vM3MzLwK1yO8j8L1PM3MzLwK1yO8j8L1vM3MzDwK1yO8j8L1vM3MzDwK1yM8j8L1vM3MzLwK1yM8j8L1vM3MzLwK1yM8j8L1vM3MzDwK1yM8j8L1PM3MzDwK1yM8j8L1PM3MzDwK1yM8j8L1vM3MzDwK1yM8j8L1vM3MzDwK1yO8j8L1vM3MzLwK1yM8j8L1PM3MzLwK1yM8j8L1PM3MzLwK1yO8j8L1PM3MzDwK1yM8j8L1PM3MzLwK1yM8j8L1vM3MzLwK1yM8j8L1PM3MzLwK1yO8j8L1PM3MzLwK1yM8j8L1PM3MzDwK1yM8j8L1PM3MzLwK1yO8j8L1PM3MzDwK1yO8j8L1vM3MzDwK1yO8j8L1vM3MzDwK1yO8j8L1PM3MzDwK1yO8j8L1PM3MzDwK1yM8j8L1PM3MzDwK1yM8j8L1PM3MzDwK1yO8j8L1PM3MzLwK1yO8AAD/f/9//n8AAP9//3/+fwAA/3//f/5//38AAP//AAD/fwAA//8AAP9/AAD//wAA/////wAA/z//////AAD/P/////8AAP8/AAD/f/9//n8AAP9//3/+fwAA/3//f/5//3//fwAA/z//f/9/AAD/P/9//38AAP8//3//////AAD/f/////8AAP9//////wAA/38AAP//AAD/fwAA//8AAP9/AAD//wAA/3//fwAA/z//f/9/AAD/P/9//38AAP8/////f/9//n////9//3/+f////3//f/5//////wAA/z//////AAD/P/////8AAP8//3//////AAD/f/////8AAP9//////wAA////f/9//n////9//3/+f////3//f/5/")
+}]
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_fmurj"]
+data = PackedVector3Array(-0.03, -0.025, 0.01, -0.03, -0.025, -0.01, -0.03, 0.025, -0.01, 0.03, -0.025, -0.01, -0.03, -0.025, -0.01, -0.03, -0.025, 0.01, -0.03, 0.025, -0.01, -0.03, -0.025, -0.01, 0.03, -0.025, -0.01, -0.03, 0.025, -0.01, -0.03, 0.025, 0.01, -0.03, -0.025, 0.01, -0.03, -0.025, 0.01, -0.03, 0.025, 0.01, 0.03, 0.025, 0.01, 0.03, 0.025, 0.01, -0.03, 0.025, 0.01, -0.03, 0.025, -0.01, -0.03, -0.025, 0.01, 0.03, -0.025, 0.01, 0.03, -0.025, -0.01, 0.03, 0.025, 0.01, 0.03, -0.025, 0.01, -0.03, -0.025, 0.01, 0.03, -0.025, -0.01, 0.03, -0.025, 0.01, 0.03, 0.025, 0.01, 0.03, -0.025, -0.01, 0.03, 0.025, -0.01, -0.03, 0.025, -0.01, -0.03, 0.025, -0.01, 0.03, 0.025, -0.01, 0.03, 0.025, 0.01, 0.03, 0.025, 0.01, 0.03, 0.025, -0.01, 0.03, -0.025, -0.01)
+
+[node name="Node3D" type="Node3D"]
+script = ExtResource("1_xuc3y")
+
+[node name="CSGBakedMeshInstance3D" type="MeshInstance3D" parent="." node_paths=PackedStringArray("body")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0162922, 0.0495746, 0.0367903)
+mesh = SubResource("ArrayMesh_6yas1")
+script = ExtResource("1_v6n12")
+outline_material = ExtResource("2_xuc3y")
+body = NodePath("StaticBody3D")
+
+[node name="Label3D" type="Label3D" parent="CSGBakedMeshInstance3D"]
+transform = Transform3D(-1, 8.74228e-08, 0, 3.82137e-15, 4.37114e-08, 1, 8.74228e-08, 1, -4.37114e-08, 0, 0.0255792, 0)
+pixel_size = 0.0005
+text = "PUSH"
+font_size = 18
+outline_size = 3
+
+[node name="StaticBody3D" type="StaticBody3D" parent="CSGBakedMeshInstance3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CSGBakedMeshInstance3D/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_fmurj")
+
+[connection signal="input_event" from="CSGBakedMeshInstance3D/StaticBody3D" to="." method="_on_static_body_3d_input_event"]
+[connection signal="mouse_entered" from="CSGBakedMeshInstance3D/StaticBody3D" to="." method="_on_static_body_3d_mouse_entered"]
+[connection signal="mouse_exited" from="CSGBakedMeshInstance3D/StaticBody3D" to="." method="_on_static_body_3d_mouse_exited"]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://dildxyuvn4kgw"]
 
-[ext_resource type="Script" uid="uid://58qme1pf1go" path="res://Scripts/wires.gd" id="1_2ti4k"]
+[ext_resource type="Script" uid="uid://58qme1pf1go" path="res://Scripts/block/wires.gd" id="1_2ti4k"]
 [ext_resource type="PackedScene" uid="uid://t1owcrpxul6" path="res://blender/wire_with_gap.blend" id="2_wkttk"]
 [ext_resource type="PackedScene" uid="uid://cr1frlk6eburs" path="res://blender/wire_cut.blend" id="3_f4im8"]
 [ext_resource type="PackedScene" uid="uid://cqdj7du6lealx" path="res://blender/copper.blend" id="4_y0xb4"]
