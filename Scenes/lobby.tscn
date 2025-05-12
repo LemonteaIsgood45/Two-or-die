@@ -101,6 +101,7 @@ text = "Instructor"
 horizontal_alignment = 1
 
 [node name="Kick" type="Button" parent="."]
+layout_mode = 0
 offset_left = 94.0
 offset_top = 285.0
 offset_right = 197.0

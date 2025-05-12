@@ -144,6 +144,8 @@ func hostGame():
 	peer.get_host().compress(ENetConnection.COMPRESS_RANGE_CODER)
 	
 	multiplayer.set_multiplayer_peer(peer)
+	
+	$"../../../../../WorldAudioManager".set_up_audio(1)
 	print("Waiting for players!")
 
 # Join an existing game by IP
@@ -153,6 +155,8 @@ func Join_by_ip(ip):
 	peer.create_client(ip, port)
 	peer.get_host().compress(ENetConnection.COMPRESS_RANGE_CODER)
 	multiplayer.set_multiplayer_peer(peer)
+	
+	$"../../../../../WorldAudioManager".set_up_audio(multiplayer.get_unique_id())
 
 # Clean up networking resources
 func clear_peer() -> void:

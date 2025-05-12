@@ -2,7 +2,6 @@
 
 [ext_resource type="Script" uid="uid://d1jlekkbhbu2o" path="res://Scripts/world_audio_manager.gd" id="1_cilue"]
 [ext_resource type="AudioStream" uid="uid://dfpfbbf240ky8" path="res://Assets/Audio/background-music-soft-calm-333111.mp3" id="2_33aiw"]
-[ext_resource type="PackedScene" uid="uid://dildxyuvn4kgw" path="res://Scenes/wires.tscn" id="2_skfha"]
 [ext_resource type="AudioStream" uid="uid://kol12vbw23m5" path="res://Assets/Audio/energetic-upbeat-background-music-333747.mp3" id="3_5a1qp"]
 [ext_resource type="AudioStream" uid="uid://vlc7iv5b2qwa" path="res://Assets/Audio/vlogs-background-music-333116.mp3" id="4_7y25y"]
 [ext_resource type="AudioStream" uid="uid://det2ak7hxaqrg" path="res://Assets/Audio/LOSE/violin-lose-4-185125.mp3" id="5_7y25y"]
@@ -43,11 +42,13 @@ clip_2/auto_advance = 0
 clip_3/name = &"Opening"
 clip_3/auto_advance = 0
 
+[sub_resource type="AudioStreamGenerator" id="AudioStreamGenerator_skfha"]
+mix_rate = 48000.0
+
 [node name="WorldAudioManager" type="Node" node_paths=PackedStringArray("bg_music_player", "player_audio_stream")]
 script = ExtResource("1_cilue")
 bg_music_player = NodePath("BackgroundMusic")
 player_audio_stream = NodePath("PlayerInteractionPlayer")
-specific_scene_instance = ExtResource("2_skfha")
 
 [node name="BackgroundMusic" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamInteractive_cilue")
@@ -57,3 +58,7 @@ bus = &"music"
 
 [node name="PlayerInteractionPlayer" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamInteractive_tmudi")
+
+[node name="Input" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamGenerator_skfha")
+bus = &"record"

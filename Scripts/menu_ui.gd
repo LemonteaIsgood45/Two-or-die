@@ -19,13 +19,16 @@ func _on_lan_back_button_button_down() -> void:
 
 #SETTING
 func _on_setting_button_pressed() -> void:
-	$Setting.show()
+	%Setting.show()
 
 func _on_setting_back_button_pressed() -> void:
-	$Setting.hide()
+	%Setting.hide()
 
 func _on_account_button_pressed() -> void:
 	pass # Replace with function body.
 
 func _on_exit_button_pressed() -> void:
 	get_tree().quit()
+
+func _on_global_setting_button_down() -> void:
+	%Setting.show()

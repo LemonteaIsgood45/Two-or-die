@@ -10,6 +10,24 @@ offset_bottom = 286.0
 theme_override_constants/separation = 10
 script = ExtResource("1_4geyq")
 
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="VoiceChat" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 28
+text = "Voice chat:"
+alignment = 0
+
+[node name="VoiceChatLabel" type="Label" parent="HBoxContainer"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 28
+text = "ON"
+
 [node name="Volumn" type="HBoxContainer" parent="."]
 layout_mode = 2
 theme_override_constants/separation = 10
@@ -80,5 +98,7 @@ alignment = 0
 custom_minimum_size = Vector2(300, 44)
 layout_mode = 2
 size_flags_horizontal = 10
-min_value = -40.0
-max_value = 0.0
+min_value = -30.0
+max_value = 10.0
+
+[connection signal="button_down" from="HBoxContainer/VoiceChat" to="." method="_on_voice_chat_button_down"]
