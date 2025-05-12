@@ -19,6 +19,16 @@ PlayerScene = ExtResource("2_3dryh")
 [node name="Bomb" parent="." instance=ExtResource("2_qxrlw")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00853853, 0.86854, -0.294791)
 
+[node name="CSGBox3D" type="CSGBox3D" parent="Bomb"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.231213, 0, 0)
+size = Vector3(0.0216797, 0.0361328, 0.118896)
+
+[node name="BombLabel" type="Label3D" parent="Bomb/CSGBox3D"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.0113598, 0, 0)
+pixel_size = 0.0005
+text = "ABVSAWR"
+font_size = 45
+
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_wrm1d")
 

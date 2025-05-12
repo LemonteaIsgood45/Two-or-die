@@ -21,9 +21,9 @@ script = ExtResource("1_d7yg1")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 0
-offset_left = 474.0
+offset_left = 408.0
 offset_top = 33.0
-offset_right = 986.0
+offset_right = 920.0
 offset_bottom = 73.0
 theme_override_constants/separation = 10
 
@@ -39,10 +39,10 @@ placeholder_text = "Name"
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="."]
 layout_mode = 0
-offset_left = 1004.0
-offset_top = 34.0
-offset_right = 1314.0
-offset_bottom = 74.0
+offset_left = 931.0
+offset_top = 33.0
+offset_right = 1241.0
+offset_bottom = 73.0
 theme_override_constants/separation = 10
 
 [node name="Host" type="Button" parent="HBoxContainer2"]
@@ -69,18 +69,18 @@ serverInfo = ExtResource("3_6qf0b")
 
 [node name="Label" type="Label" parent="ServerBrowser"]
 layout_mode = 0
-offset_left = 774.0
+offset_left = 737.0
 offset_top = -128.0
-offset_right = 933.0
+offset_right = 896.0
 offset_bottom = -105.0
 text = "Bound to listen port:"
 
 [node name="Panel" type="Panel" parent="ServerBrowser"]
 layout_mode = 0
-offset_left = 422.0
-offset_top = -47.0
-offset_right = 1034.0
-offset_bottom = 415.0
+offset_left = 348.0
+offset_top = -46.0
+offset_right = 960.0
+offset_bottom = 416.0
 
 [node name="ServerInfo2" type="HBoxContainer" parent="ServerBrowser/Panel"]
 layout_mode = 2

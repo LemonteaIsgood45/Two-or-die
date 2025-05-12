@@ -2,27 +2,26 @@ extends Node3D
 
 @onready var BASE_WIRE = preload("res://Scenes/wires.tscn")
 
-var correct := false
-var total_correct_cut := 0
-var correct_cut := 0
+var serial_number
 
-var wires_data = [
-	{"index": 0, "color": "red",    "is_correct": true},
-	{"index": 1, "color": "blue",   "is_correct": false},
-	{"index": 2, "color": "green",  "is_correct": true},
-	{"index": 3, "color": "yellow", "is_correct": false},
-	{"index": 4, "color": "white",  "is_correct": false},
-]
+var correct := false
+
+var wires_data 
+var correct_cut_index
+var wires_cut = 0
 
 var wire_nodes = [] # Stores instances and their index
 
 func _ready() -> void:
+	var parent = get_parent()
+	wires_data = GameState.generate_wires()
+	serial_number = parent.serial_number
+	correct_cut_index = GameState.determine_wire_to_cut(wires_data, serial_number)
+	
+	
 	for wire_info in wires_data:
 		var wire = BASE_WIRE.instantiate()
 		var color = get_color_from_name(wire_info["color"])
-
-		if wire_info["is_correct"]:
-			total_correct_cut += 1
 
 		if color.a == 0:
 			push_error("Unknown color: %s" % wire_info["color"])
@@ -44,19 +43,20 @@ func _process(_delta: float) -> void:
 
 		if wire.is_cut and not wire.is_counted:
 			wire.is_counted = true
-			if wires_data[index]["is_correct"]:
-				correct_cut += 1
+			wires_cut += 1
+			if index == correct_cut_index and wires_cut == 1:
+				correct = true
+				%state.correct = correct
+				%state.finish = true
+				
+				print("Wire block corrected")
 			else:
 				correct = false
-				%state.correct = false
+				%state.correct = correct
 				%state.finish = true
+				
+				print("Wire block failed")
 
-	if correct_cut == total_correct_cut and not %state.finish:
-		print("All correct wires cut, updating state!")
-
-		correct = true
-		%state.correct = true
-		%state.finish = true
 
 
 func get_z_position(index):

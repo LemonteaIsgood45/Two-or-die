@@ -21,6 +21,8 @@ var block4Pos = Vector3(0.15, 0, -0.07)
 var block5Pos = Vector3(0, 0, -0.07)
 var block6Pos = Vector3(-0.15, 0, -0.07)
 
+var serial_number = GameState.generate_random_serial_number()
+
 func  _ready() -> void:
 	var block1 = timerBlock.instantiate()
 	add_child(block1)
@@ -40,3 +42,5 @@ func  _ready() -> void:
 	block4.position = block4Pos
 	block5.position = block5Pos
 	block6.position = block6Pos
+	
+	$CSGBox3D/BombLabel.text = serial_number
