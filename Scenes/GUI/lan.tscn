@@ -1,0 +1,25 @@
+[gd_scene load_steps=2 format=3 uid="uid://do6x6ehfi6u0q"]
+
+[ext_resource type="PackedScene" uid="uid://bwhb637c72vsf" path="res://Scenes/GUI/multiplayerScene.tscn" id="1_vw1em"]
+
+[node name="LAN" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1143.0
+offset_bottom = 654.0
+
+[node name="LAN" type="ColorRect" parent="."]
+unique_name_in_owner = true
+z_index = 1
+layout_mode = 0
+offset_right = 1137.0
+offset_bottom = 652.0
+color = Color(0, 0, 0, 0.901961)
+
+[node name="Control" parent="LAN" instance=ExtResource("1_vw1em")]
+z_index = 2
+layout_mode = 1
+offset_left = -5.0
+offset_top = -6.0
+offset_right = 1.0
+offset_bottom = -6.0

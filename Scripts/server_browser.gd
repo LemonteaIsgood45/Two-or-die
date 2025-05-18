@@ -87,7 +87,7 @@ func _process(delta: float) -> void:
 		$Panel/VBoxContainer.add_child(currentInfo)
 		currentInfo.joinGame.connect(func(ip):
 			join_by_ip(ip)
-			$"../LobbyControl".visible = true
+			$"../LobbyControl/LobbyScene".visible = true
 		)
 		found_server.emit(server_ip, server_port, roomInfo)
 

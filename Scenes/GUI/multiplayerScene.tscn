@@ -2,9 +2,9 @@
 
 [ext_resource type="Script" uid="uid://8ewix5rx3n3a" path="res://Scripts/multiplayer_scene.gd" id="1_d7yg1"]
 [ext_resource type="Script" uid="uid://bepharh30l5l" path="res://Scripts/server_browser.gd" id="2_63pef"]
-[ext_resource type="PackedScene" uid="uid://kxnmtxq4g8rl" path="res://Scenes/server_info.tscn" id="3_6qf0b"]
-[ext_resource type="PackedScene" uid="uid://cot0xf2bb73o4" path="res://Scenes/lobby.tscn" id="4_amogh"]
-[ext_resource type="PackedScene" uid="uid://6vtv2cc6amk" path="res://Scenes/text_chat.tscn" id="5_kro1a"]
+[ext_resource type="PackedScene" uid="uid://kxnmtxq4g8rl" path="res://Scenes/GUI/server_info.tscn" id="3_6qf0b"]
+[ext_resource type="PackedScene" uid="uid://cot0xf2bb73o4" path="res://Scenes/GUI/lobby.tscn" id="4_amogh"]
+[ext_resource type="PackedScene" uid="uid://6vtv2cc6amk" path="res://Scenes/GUI/text_chat.tscn" id="5_kro1a"]
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -58,10 +58,10 @@ text = "Join"
 
 [node name="ServerBrowser" type="Control" parent="."]
 anchors_preset = 0
-offset_left = 61.0
-offset_top = 130.0
-offset_right = 101.0
-offset_bottom = 170.0
+offset_left = 64.0
+offset_top = 133.0
+offset_right = 64.0
+offset_bottom = 142.0
 script = ExtResource("2_63pef")
 serverInfo = ExtResource("3_6qf0b")
 
@@ -116,16 +116,28 @@ offset_top = 27.0
 offset_right = 610.0
 offset_bottom = 462.0
 
+[node name="LANButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 55.0
+offset_top = 463.0
+offset_right = 241.0
+offset_bottom = 516.0
+theme_override_font_sizes/font_size = 28
+text = "Back"
+
 [node name="LobbyControl" type="Control" parent="."]
-visible = false
 anchors_preset = 0
+offset_left = 402.0
+offset_top = 582.0
 offset_right = 1150.0
 offset_bottom = 651.0
 
 [node name="LobbyScene" type="ColorRect" parent="LobbyControl"]
 layout_mode = 0
-offset_right = 1147.0
-offset_bottom = 648.0
+offset_left = -399.0
+offset_top = -581.0
+offset_right = 748.0
+offset_bottom = 67.0
 color = Color(0, 0, 0, 0.870588)
 
 [node name="Lobby" parent="LobbyControl/LobbyScene" instance=ExtResource("4_amogh")]
@@ -164,5 +176,6 @@ text = "Start"
 [connection signal="button_down" from="HBoxContainer2/Host" to="." method="_on_host_button_down"]
 [connection signal="button_down" from="HBoxContainer2/Join" to="." method="_on_join_button_down"]
 [connection signal="timeout" from="ServerBrowser/BroadcastTimer" to="ServerBrowser" method="_on_broadcast_timer_timeout"]
+[connection signal="button_down" from="LANButton" to="." method="_on_lan_button_button_down"]
 [connection signal="button_down" from="LobbyControl/LobbyScene/BackToLANBrowser" to="." method="_on_back_to_lan_browser_button_down"]
 [connection signal="button_down" from="LobbyControl/LobbyScene/Start" to="." method="_on_start_button_down"]

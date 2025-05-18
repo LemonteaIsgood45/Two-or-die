@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=3 uid="uid://cot0xf2bb73o4"]
 
-[ext_resource type="Script" uid="uid://pqpvu2n33t63" path="res://Scripts/lobby.gd" id="1_nvaej"]
-[ext_resource type="Texture2D" uid="uid://etkud1n40sim" path="res://Assets/Textures/kenney_prototype_textures/red/texture_13.png" id="2_u1o2k"]
-[ext_resource type="Texture2D" uid="uid://b0i2im4sh7874" path="res://Assets/Textures/kenney_prototype_textures/red/texture_12.png" id="3_avk8s"]
+[ext_resource type="Script" uid="uid://pqpvu2n33t63" path="res://Scripts/lobby.gd" id="1_jf86j"]
+[ext_resource type="Texture2D" uid="uid://etkud1n40sim" path="res://Assets/Textures/kenney_prototype_textures/red/texture_13.png" id="2_qbbff"]
+[ext_resource type="Texture2D" uid="uid://b0i2im4sh7874" path="res://Assets/Textures/kenney_prototype_textures/red/texture_12.png" id="3_iih26"]
 
 [node name="Lobby" type="Control"]
 layout_mode = 3
@@ -11,7 +11,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_nvaej")
+script = ExtResource("1_jf86j")
 
 [node name="StatusLabel" type="Label" parent="."]
 layout_mode = 0
@@ -65,7 +65,7 @@ unique_name_in_owner = true
 visible = false
 custom_minimum_size = Vector2(90, 0)
 layout_mode = 2
-texture = ExtResource("2_u1o2k")
+texture = ExtResource("2_qbbff")
 expand_mode = 1
 
 [node name="BoxContainer2" type="BoxContainer" parent="HBoxContainer2"]
@@ -77,7 +77,7 @@ unique_name_in_owner = true
 visible = false
 custom_minimum_size = Vector2(90, 0)
 layout_mode = 2
-texture = ExtResource("3_avk8s")
+texture = ExtResource("3_iih26")
 expand_mode = 1
 
 [node name="DefuserLabel" type="Label" parent="."]

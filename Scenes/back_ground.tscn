@@ -1,0 +1,51 @@
+[gd_scene load_steps=7 format=4 uid="uid://bpu2k4qcvrtpb"]
+
+[ext_resource type="Texture2D" uid="uid://c4g8aqt2tqmjj" path="res://Assets/Textures/kenney_prototype_textures/green/texture_08.png" id="1_xb1mu"]
+[ext_resource type="PackedScene" uid="uid://dgrk4ge7ybanv" path="res://Assets/suitcase_with_combination_lock.glb" id="2_ffwjg"]
+[ext_resource type="Script" uid="uid://w0lymgke7w5c" path="res://Scripts/main_menu_suitcase.gd" id="3_lvb74"]
+
+[sub_resource type="Environment" id="Environment_28flt"]
+background_mode = 1
+ambient_light_energy = 7.28
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_48xlc"]
+albedo_color = Color(0.54099, 0.54099, 0.54099, 1)
+albedo_texture = ExtResource("1_xb1mu")
+uv1_scale = Vector3(20, 20, 20)
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_28flt"]
+_surfaces = [{
+"aabb": AABB(-50, -0.5, -50, 100, 1, 100),
+"attribute_data": PackedByteArray("AACAPwAAgD8AAIA/AAAAAAAAAAAAAAAAAACAPwAAgD8AAIA/AAAAAAAAAAAAAAAAAACAPwAAgD8AAIA/AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAPwAAgD8AAIA/AACAPwAAgD8AAIA/AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAPwAAgD8AAIA/AAAAAAAAAAAAAAAAAACAPwAAgD8AAIA/AAAAAAAAAAAAAAAAAACAPwAAgD8AAIA/AACAPwAAgD8AAIA/AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAPwAAgD8AAIA/AACAPwAAgD8AAIA/AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAPwAAgD8AAIA/"),
+"format": 34359738391,
+"material": SubResource("StandardMaterial3D_48xlc"),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 36,
+"vertex_data": PackedByteArray("AABIwgAAAL8AAEhCAABIwgAAAL8AAEjCAABIwgAAAD8AAEjCAABIQgAAAL8AAEjCAABIwgAAAL8AAEjCAABIwgAAAL8AAEhCAABIwgAAAD8AAEjCAABIwgAAAL8AAEjCAABIQgAAAL8AAEjCAABIwgAAAD8AAEjCAABIwgAAAD8AAEhCAABIwgAAAL8AAEhCAABIwgAAAL8AAEhCAABIwgAAAD8AAEhCAABIQgAAAD8AAEhCAABIQgAAAD8AAEhCAABIwgAAAD8AAEhCAABIwgAAAD8AAEjCAABIwgAAAL8AAEhCAABIQgAAAL8AAEhCAABIQgAAAL8AAEjCAABIQgAAAD8AAEhCAABIQgAAAL8AAEhCAABIwgAAAL8AAEhCAABIQgAAAL8AAEjCAABIQgAAAL8AAEhCAABIQgAAAD8AAEhCAABIQgAAAL8AAEjCAABIQgAAAD8AAEjCAABIwgAAAD8AAEjCAABIwgAAAD8AAEjCAABIQgAAAD8AAEjCAABIQgAAAD8AAEhCAABIQgAAAD8AAEhCAABIQgAAAD8AAEjCAABIQgAAAL8AAEjCAAD/f/9//n8AAP9//3/+fwAA/3//f/5//38AAP//AAD/fwAA//8AAP9/AAD//wAA/////wAA/z//////AAD/P/////8AAP8/AAD/f/9//n8AAP9//3/+fwAA/3//f/5//3//fwAA/z//f/9/AAD/P/9//38AAP8//3//////AAD/f/////8AAP9//////wAA/38AAP//AAD/fwAA//8AAP9/AAD//wAA/3//fwAA/z//f/9/AAD/P/9//38AAP8/////f/9//n////9//3/+f////3//f/5//////wAA/z//////AAD/P/////8AAP8//3//////AAD/f/////8AAP9//////wAA////f/9//n////9//3/+f////3//f/5/")
+}]
+
+[node name="BackGround" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_28flt")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(0.904938, -0.123093, 0.407352, -0.0171727, 0.945907, 0.323982, -0.425197, -0.300179, 0.853874, 0, 1.103, 1.18283)
+
+[node name="background" type="Node3D" parent="."]
+
+[node name="CSGBakedMeshInstance3D" type="MeshInstance3D" parent="background"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.378275, 0)
+mesh = SubResource("ArrayMesh_28flt")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="background"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 1.95232, 0)
+
+[node name="Sketchfab_Scene" parent="background" instance=ExtResource("2_ffwjg")]
+transform = Transform3D(0.692926, 0.566407, -0.446135, -0.70665, 0.410633, -0.576217, -0.143176, 0.714538, 0.684789, 0, 0.753157, 0)
+script = ExtResource("3_lvb74")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="background"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.40176, 6.98765)
+light_energy = 0.309

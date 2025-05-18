@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Two or die"
-run/main_scene="uid://c5mmpveu8us7e"
+run/main_scene="uid://da7pevhg10iyy"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="res://icon.svg"
 

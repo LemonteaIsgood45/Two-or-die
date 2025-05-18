@@ -1,0 +1,26 @@
+[gd_scene load_steps=3 format=3 uid="uid://beqmnv7gtf81q"]
+
+[ext_resource type="Script" uid="uid://d3fjp5e2ifmh1" path="res://test_bomb_scene.gd" id="1_sky6m"]
+[ext_resource type="PackedScene" uid="uid://dyydrbgiya60v" path="res://Scenes/bomb.tscn" id="1_wr334"]
+
+[node name="Node3D" type="Node3D"]
+script = ExtResource("1_sky6m")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(-0.999976, 0.00687901, -0.000964334, 0, 0.138827, 0.990317, 0.00694627, 0.990293, -0.138824, 0, 0.445996, -0.0391411)
+
+[node name="SpotLight3D" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -0.0304687, 0.999536, 0, -0.999536, -0.0304687, 0, 1.99635, 0)
+
+[node name="Bomb" parent="." instance=ExtResource("1_wr334")]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Button" type="Button" parent="CanvasLayer"]
+offset_left = 543.0
+offset_top = 568.0
+offset_right = 694.0
+offset_bottom = 601.0
+text = "reset"
+
+[connection signal="button_down" from="CanvasLayer/Button" to="." method="_on_button_button_down"]

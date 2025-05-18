@@ -13,8 +13,6 @@ var receiveBuffer := PackedFloat32Array()
 @export var player_audio_stream: AudioStreamPlayer
 @export var specific_scene_instance: PackedScene
 
-@export var setting: VBoxContainer
-
 var current_state
 
 func _ready() -> void:
@@ -24,14 +22,17 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	update_volumn()
+	
 	if current_state != GlobalAudio.current_state:
 		current_state = GlobalAudio.current_state
-	
-	if is_multiplayer_authority() and setting.is_voice_chat_open == true:
-		process_mic()
-		
+
+	# ✅ Only run multiplayer logic if peer is active
+	if multiplayer.has_multiplayer_peer():
+		if is_multiplayer_authority() and GameState.is_voice_chat_open:
+			process_mic()
+
 	process_voice()
-	pass
+
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:

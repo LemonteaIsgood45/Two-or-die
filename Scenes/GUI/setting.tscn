@@ -1,0 +1,40 @@
+[gd_scene load_steps=2 format=3 uid="uid://uxvvostxrsai"]
+
+[ext_resource type="PackedScene" uid="uid://d3cxcocwotpbn" path="res://Scenes/GUI/settings.tscn" id="1_h44gi"]
+
+[node name="Setting" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 10.0
+offset_top = 1.0
+offset_right = 1151.0
+offset_bottom = 639.0
+
+[node name="setting" type="ColorRect" parent="."]
+unique_name_in_owner = true
+z_index = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 10.0
+offset_bottom = 3.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.894118)
+
+[node name="Label" type="Label" parent="setting"]
+layout_mode = 0
+offset_left = 404.0
+offset_top = 50.0
+offset_right = 732.0
+offset_bottom = 160.0
+theme_override_font_sizes/font_size = 80
+text = "SETTING"
+
+[node name="settings" parent="setting" instance=ExtResource("1_h44gi")]
+layout_mode = 0
+offset_left = 342.0
+offset_top = 178.0
+offset_right = 845.0
+offset_bottom = 453.0

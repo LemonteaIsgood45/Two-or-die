@@ -1,7 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://ya4qbtpxqj3o"]
+[gd_scene load_steps=5 format=3 uid="uid://ya4qbtpxqj3o"]
 
 [ext_resource type="Script" uid="uid://51hi6ow1rjyp" path="res://Scripts/player.gd" id="1_v0iea"]
-[ext_resource type="Script" uid="uid://dp44mslupssrl" path="res://Scripts/player_camera.gd" id="2_cvnsp"]
 [ext_resource type="Texture2D" uid="uid://qj75rkbjqe8y" path="res://Assets/Textures/kenney_prototype_textures/dark/texture_01.png" id="3_6t5aa"]
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_cvnsp"]
@@ -16,7 +15,6 @@ albedo_texture = ExtResource("3_6t5aa")
 script = ExtResource("1_v0iea")
 
 [node name="Camera3D" type="Camera3D" parent="."]
-script = ExtResource("2_cvnsp")
 
 [node name="RoleLabel" type="Label" parent="."]
 offset_right = 40.0

@@ -6,6 +6,7 @@ signal player_kicked(error_title: String, error_content: String)
 @export var port = 8910
 
 var peer
+var game_finished := false
 
 var connected_peers: Dictionary = {}
 var player_username: String = ""
@@ -30,12 +31,13 @@ func _ready():
 	$ServerBrowser.joinGame.connect(Join_by_ip)
 	$LobbyControl/LobbyScene/Lobby.player_kicked.connect(_on_lobby_player_player_kicked)
 
+
 func _process(delta: float) -> void:
 	if peer == null:
-		$LobbyControl.hide()
+		$LobbyControl/LobbyScene.hide()
 	else:
-		$LobbyControl.show()
-	pass
+		$LobbyControl/LobbyScene.show()
+
 
 # This gets called on the server and clients when a peer connects
 func peer_connected(id):
@@ -83,8 +85,8 @@ func connection_failed():
 func on_server_disconnected() -> void:
 	if has_game_ended:
 		return
-	$"../../../../../background".show()
-	%MenuUI.show()
+	GameState.game_controller.change_3d_scene("res://Scenes/back_ground.tscn")
+	GameState.game_controller.change_gui_scene("res://Scenes/GUI/menu_ui.tscn")
 	player_kicked.emit("Host Left","The game has ended because host has left.")
 
 # RPC to synchronize player information between peers
@@ -119,12 +121,11 @@ func start_game():
 		print("Updated myself: ", GameState.players[my_id])
 	else:
 		print("Couldn't find my own player data.")
-	var scene = load("res://Scenes/game.tscn").instantiate()
-	get_tree().root.add_child(scene)
-	
-	$"../../../../../background".hide()
-	%MenuUI.hide()
-	self.hide()
+	game_finished = false
+	GameState.current_mode = GameState.GameMode.PLAYING
+	print("Starting game with mode: " + str(GameState.current_mode))
+	GameState.game_controller.change_3d_scene("res://Scenes/game.tscn", false, false)
+	GameState.game_controller.change_gui_scene("res://Scenes/GUI/game_canvas_ui.tscn", true, false)
 
 # Called when the game starts
 func game_started() -> void:
@@ -145,7 +146,7 @@ func hostGame():
 	
 	multiplayer.set_multiplayer_peer(peer)
 	
-	$"../../../../../WorldAudioManager".set_up_audio(1)
+	get_tree().get_root().get_node("GameController/WorldAudioManager").set_up_audio(1)
 	print("Waiting for players!")
 
 # Join an existing game by IP
@@ -156,12 +157,13 @@ func Join_by_ip(ip):
 	peer.get_host().compress(ENetConnection.COMPRESS_RANGE_CODER)
 	multiplayer.set_multiplayer_peer(peer)
 	
-	$"../../../../../WorldAudioManager".set_up_audio(multiplayer.get_unique_id())
+	get_tree().get_root().get_node("GameController/WorldAudioManager").set_up_audio(multiplayer.get_unique_id())
 
 # Clean up networking resources
 func clear_peer() -> void:
 	has_game_ended = false
 	has_game_started = false
+	game_finished = false
 
 	connected_peers.clear()
 	GameState.players.clear()
@@ -178,7 +180,7 @@ func clear_peer() -> void:
 func _on_host_button_down():
 	hostGame()
 	
-	$LobbyControl.visible = true
+	$LobbyControl/LobbyScene.visible = true
 	
 	var my_id = multiplayer.get_unique_id()
 	var my_name = %LineEdit.text
@@ -202,12 +204,11 @@ func _on_host_button_down():
 	print("GameState.players = ", GameState.players)
 
 func _on_join_button_down():
-	$LobbyControl.visible = true
+	$LobbyControl/LobbyScene.visible = true
 	Join_by_ip(Address)
 
 func _on_start_button_down() -> void:
 	if multiplayer.is_server() and GameState.players.size() == 2:
-		GameState.current_mode = GameState.GameMode.PLAYING
 		game_started()
 
 func _on_lobby_player_player_kicked(playerId) -> void:
@@ -221,4 +222,9 @@ func _on_back_to_lan_browser_button_down() -> void:
 		multiplayer.multiplayer_peer = null  # Disconnect from server
 	
 	clear_peer()  # Your own cleanup function
-	$LobbyControl.visible = false
+	$LobbyControl/LobbyScene.visible = false
+
+
+func _on_lan_button_button_down() -> void:
+	GameState.game_controller.change_gui_scene("res://Scenes/GUI/menu_ui.tscn", true, true)
+	pass

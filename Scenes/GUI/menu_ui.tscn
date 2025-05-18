@@ -1,0 +1,65 @@
+[gd_scene load_steps=2 format=3 uid="uid://imk4gcsmpjgu"]
+
+[ext_resource type="Script" uid="uid://fa87i11loluk" path="res://Scripts/menu_ui.gd" id="1_bhc3w"]
+
+[node name="MenuUI" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 10.0
+offset_top = 1.0
+offset_right = 1147.0
+offset_bottom = 652.0
+script = ExtResource("1_bhc3w")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 74.0
+offset_top = 54.0
+offset_right = 932.0
+offset_bottom = 236.0
+theme_override_font_sizes/font_size = 80
+text = "TWO OR DIE"
+
+[node name="main_menu_buttons" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 100.0
+offset_top = 193.0
+offset_right = 282.0
+offset_bottom = 544.0
+theme_override_constants/separation = 22
+
+[node name="OnlineGameButton" type="Button" parent="main_menu_buttons"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 28
+text = "ONLINE"
+alignment = 0
+
+[node name="LanGameButton" type="Button" parent="main_menu_buttons"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 28
+text = "LAN"
+alignment = 0
+
+[node name="SettingButton" type="Button" parent="main_menu_buttons"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 28
+text = "SETTING"
+alignment = 0
+
+[node name="AccountButton" type="Button" parent="main_menu_buttons"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 28
+text = "ACCOUNT"
+alignment = 0
+
+[node name="ExitButton" type="Button" parent="main_menu_buttons"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 28
+text = "EXIT"
+alignment = 0
+
+[connection signal="pressed" from="main_menu_buttons/OnlineGameButton" to="." method="_on_online_game_button_pressed"]
+[connection signal="pressed" from="main_menu_buttons/LanGameButton" to="." method="_on_lan_game_button_pressed"]
+[connection signal="pressed" from="main_menu_buttons/SettingButton" to="." method="_on_setting_button_pressed"]
+[connection signal="pressed" from="main_menu_buttons/AccountButton" to="." method="_on_account_button_pressed"]
+[connection signal="pressed" from="main_menu_buttons/ExitButton" to="." method="_on_exit_button_pressed"]

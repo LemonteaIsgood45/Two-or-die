@@ -45,7 +45,7 @@ layout_mode = 2
 size_flags_horizontal = 10
 min_value = -30.0
 max_value = 0.0
-value = -15.0
+value = -25.0
 
 [node name="Music" type="HBoxContainer" parent="."]
 layout_mode = 2
@@ -101,4 +101,11 @@ size_flags_horizontal = 10
 min_value = -30.0
 max_value = 10.0
 
+[node name="setting_back_button" type="Button" parent="."]
+layout_mode = 2
+theme_override_font_sizes/font_size = 28
+text = "BACK"
+alignment = 0
+
 [connection signal="button_down" from="HBoxContainer/VoiceChat" to="." method="_on_voice_chat_button_down"]
+[connection signal="button_down" from="setting_back_button" to="." method="_on_setting_back_button_button_down"]

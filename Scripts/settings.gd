@@ -1,10 +1,10 @@
 extends VBoxContainer
 
-var is_voice_chat_open := false
+var is_voice_chat_open = GameState.is_voice_chat_open
 
 func _process(delta: float) -> void:
 	volumn_update()
-	if is_voice_chat_open == true:
+	if GameState.is_voice_chat_open == true:
 		$HBoxContainer/VoiceChatLabel.text = "ON"
 	else:
 		$HBoxContainer/VoiceChatLabel.text = "OFF"
@@ -22,4 +22,12 @@ func volumn_update():
 
 
 func _on_voice_chat_button_down() -> void:
-	is_voice_chat_open = !is_voice_chat_open
+	GameState.is_voice_chat_open = !GameState.is_voice_chat_open
+
+
+func _on_setting_back_button_button_down() -> void:
+	if GameState.current_mode == GameState.GameMode.HOME:
+		GameState.game_controller.change_gui_scene("res://Scenes/GUI/menu_ui.tscn", false)
+		return
+	GameState.game_controller.change_gui_scene("res://Scenes/GUI/game_canvas_ui.tscn", false)
+	pass # Replace with function body.

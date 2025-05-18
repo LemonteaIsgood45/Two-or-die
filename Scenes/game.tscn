@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://d2m7cuwyga1jr" path="res://Scripts/game.gd" id="1_wrm1d"]
 [ext_resource type="PackedScene" uid="uid://ya4qbtpxqj3o" path="res://Scenes/player.tscn" id="2_3dryh"]
 [ext_resource type="PackedScene" uid="uid://dyydrbgiya60v" path="res://Scenes/bomb.tscn" id="2_qxrlw"]
-[ext_resource type="PackedScene" uid="uid://6vtv2cc6amk" path="res://Scenes/text_chat.tscn" id="5_wowpa"]
+[ext_resource type="PackedScene" uid="uid://6vtv2cc6amk" path="res://Scenes/GUI/text_chat.tscn" id="5_wowpa"]
 
 [sub_resource type="Environment" id="Environment_wrm1d"]
 ambient_light_color = Color(1, 1, 1, 1)
@@ -16,27 +16,20 @@ PlayerScene = ExtResource("2_3dryh")
 
 [node name="Main" parent="." instance=ExtResource("1_ebmjs")]
 
-[node name="Bomb" parent="." instance=ExtResource("2_qxrlw")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00853853, 0.86854, -0.294791)
-
-[node name="CSGBox3D" type="CSGBox3D" parent="Bomb"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.231213, 0, 0)
-size = Vector3(0.0216797, 0.0361328, 0.118896)
-
-[node name="BombLabel" type="Label3D" parent="Bomb/CSGBox3D"]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.0113598, 0, 0)
-pixel_size = 0.0005
-text = "ABVSAWR"
-font_size = 45
-
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_wrm1d")
 
 [node name="Defuser" type="Node3D" parent="."]
-transform = Transform3D(-1, -8.9407e-08, -3.67423e-08, -3.67423e-08, -2.36788e-08, 1, -8.9407e-08, 1, 2.36788e-08, 0, 1.22874, -0.288314)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 1.07415, -0.795412)
+
+[node name="Bomb" parent="Defuser" instance=ExtResource("2_qxrlw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.460555, 0)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Defuser"]
+light_energy = 0.364
 
 [node name="Instructor" type="Node3D" parent="."]
-transform = Transform3D(-1, -8.9407e-08, -3.67423e-08, -3.67423e-08, -2.36788e-08, 1, -8.9407e-08, 1, 2.36788e-08, 0, 1.22874, 0.341387)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 1.12209, 0.767685)
 
 [node name="TextChat" parent="." instance=ExtResource("5_wowpa")]
 offset_left = 861.0
