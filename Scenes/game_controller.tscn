@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://imk4gcsmpjgu" path="res://Scenes/GUI/menu_ui.tscn" id="2_ppfu0"]
 [ext_resource type="PackedScene" uid="uid://dy258a7bdre5b" path="res://Scenes/world_audio_manager.tscn" id="3_ppfu0"]
 [ext_resource type="PackedScene" uid="uid://dildxyuvn4kgw" path="res://Scenes/wires.tscn" id="4_7la68"]
-[ext_resource type="Script" uid="uid://dylf11ly4dj74" path="res://Scenes/label.gd" id="4_k0qbb"]
+[ext_resource type="Script" uid="uid://dylf11ly4dj74" path="res://Scripts/label.gd" id="4_k0qbb"]
 
 [sub_resource type="AudioStreamGenerator" id="AudioStreamGenerator_k0qbb"]
 mix_rate = 48000.0

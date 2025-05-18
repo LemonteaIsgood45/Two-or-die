@@ -1,20 +1,21 @@
-[gd_scene load_steps=3 format=3 uid="uid://bbqlhiykmxsha"]
+[gd_scene load_steps=7 format=3 uid="uid://bbqlhiykmxsha"]
 
 [ext_resource type="PackedScene" uid="uid://c6tpw5c20sfck" path="res://Scenes/text_button.tscn" id="1_smxsm"]
 [ext_resource type="Script" uid="uid://dsbknfot4fvdl" path="res://Scripts/block/text_block.gd" id="1_wnvfk"]
+[ext_resource type="PackedScene" uid="uid://btdgpsl5axthc" path="res://Scenes/notifier.tscn" id="3_5guge"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5guge"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ui0oc"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bh1q4"]
 
 [node name="Node3D" type="Node3D"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
 script = ExtResource("1_wnvfk")
 
-[node name="CSGBox3D" type="CSGBox3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.69637e-05, -1.49012e-08, -0.000497341)
-size = Vector3(0.13, 0.14, 0.12)
-
-[node name="CSGBox3D2" type="CSGBox3D" parent="CSGBox3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00399898, 0.0752866, 0.00918768)
-operation = 2
-size = Vector3(0.1, 0.02, 0.08)
+[node name="DisplayText" parent="." instance=ExtResource("1_smxsm")]
+transform = Transform3D(1.1, 0, 0, 0, 1.1, 0, 0, 0, 1.1, -0.0161848, 0.048, -0.0448997)
 
 [node name="text_1" parent="." instance=ExtResource("1_smxsm")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.029, 0.048, -0.016)
@@ -33,3 +34,32 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.029, 0.048, 0.035)
 
 [node name="text_6" parent="." instance=ExtResource("1_smxsm")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.021, 0.048, 0.035)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+transform = Transform3D(-1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, 2.69637e-05, -1.49012e-08, -0.000497341)
+size = Vector3(0.13, 0.14, 0.12)
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="CSGBox3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0621781, 1.49012e-08, 0.0644191)
+operation = 2
+radius = 0.04
+height = 0.141
+sides = 32
+
+[node name="state" parent="." instance=ExtResource("3_5guge")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0492415, 0.0582517, -0.0465568)
+
+[node name="Strike_1" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.054377, 0.067334, 0.0415718)
+size = Vector3(0.01, 0.01, 0.01)
+material = SubResource("StandardMaterial3D_5guge")
+
+[node name="Strike_2" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.054377, 0.067334, 0.0280085)
+size = Vector3(0.01, 0.01, 0.01)
+material = SubResource("StandardMaterial3D_ui0oc")
+
+[node name="Strike_3" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.054377, 0.067334, 0.0141768)
+size = Vector3(0.01, 0.01, 0.01)
+material = SubResource("StandardMaterial3D_bh1q4")

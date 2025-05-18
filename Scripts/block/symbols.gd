@@ -14,8 +14,6 @@ func update_label_text(new_text: String):
 	else:
 		push_warning("Label3D not found or incorrect type.")
 
-
-
 func _on_static_body_3d_mouse_entered() -> void:
 	_update_z_position()
 

@@ -1,5 +1,6 @@
-[gd_scene load_steps=5 format=4 uid="uid://c6tpw5c20sfck"]
+[gd_scene load_steps=6 format=4 uid="uid://c6tpw5c20sfck"]
 
+[ext_resource type="Script" uid="uid://bimhodbi74xo8" path="res://Scripts/text_button.gd" id="1_mfc1d"]
 [ext_resource type="Script" uid="uid://bggrlypqi73ds" path="res://Scripts/select_highlight.gd" id="1_xfn36"]
 [ext_resource type="Material" uid="uid://cjlgh3vgi2yqn" path="res://outline_and_selection/outline_small.tres" id="2_mfc1d"]
 
@@ -18,6 +19,7 @@ _surfaces = [{
 data = PackedVector3Array(-0.024, -0.025, 0.0125, -0.024, -0.025, -0.0125, -0.024, 0.025, -0.0125, 0.024, -0.025, -0.0125, -0.024, -0.025, -0.0125, -0.024, -0.025, 0.0125, -0.024, 0.025, -0.0125, -0.024, -0.025, -0.0125, 0.024, -0.025, -0.0125, -0.024, 0.025, -0.0125, -0.024, 0.025, 0.0125, -0.024, -0.025, 0.0125, -0.024, -0.025, 0.0125, -0.024, 0.025, 0.0125, 0.024, 0.025, 0.0125, 0.024, 0.025, 0.0125, -0.024, 0.025, 0.0125, -0.024, 0.025, -0.0125, -0.024, -0.025, 0.0125, 0.024, -0.025, 0.0125, 0.024, -0.025, -0.0125, 0.024, 0.025, 0.0125, 0.024, -0.025, 0.0125, -0.024, -0.025, 0.0125, 0.024, -0.025, -0.0125, 0.024, -0.025, 0.0125, 0.024, 0.025, 0.0125, 0.024, -0.025, -0.0125, 0.024, 0.025, -0.0125, -0.024, 0.025, -0.0125, -0.024, 0.025, -0.0125, 0.024, 0.025, -0.0125, 0.024, 0.025, 0.0125, 0.024, 0.025, 0.0125, 0.024, 0.025, -0.0125, 0.024, -0.025, -0.0125)
 
 [node name="Node3D" type="Node3D"]
+script = ExtResource("1_mfc1d")
 
 [node name="CSGBakedMeshInstance3D" type="MeshInstance3D" parent="." node_paths=PackedStringArray("body")]
 transform = Transform3D(0.95, 0, 0, 0, 0.95, 0, 0, 0, 0.95, 0, 0, 0)
@@ -36,5 +38,9 @@ transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0.0
 pixel_size = 0.0005
 modulate = Color(0, 0, 0, 1)
 text = "bla"
-font_size = 20
+font_size = 18
 outline_size = 0
+
+[connection signal="input_event" from="CSGBakedMeshInstance3D/StaticBody3D" to="." method="_on_static_body_3d_input_event"]
+[connection signal="mouse_entered" from="CSGBakedMeshInstance3D/StaticBody3D" to="." method="_on_static_body_3d_mouse_entered"]
+[connection signal="mouse_exited" from="CSGBakedMeshInstance3D/StaticBody3D" to="." method="_on_static_body_3d_mouse_exited"]
