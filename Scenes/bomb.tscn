@@ -26,3 +26,53 @@ font_size = 45
 
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
 replication_config = SubResource("SceneReplicationConfig_kdyat")
+
+[node name="Up" type="Button" parent="."]
+custom_minimum_size = Vector2(100, 50)
+offset_left = 538.0
+offset_top = 20.0
+offset_right = 638.0
+offset_bottom = 70.0
+text = "UP"
+
+[node name="Down" type="Button" parent="."]
+custom_minimum_size = Vector2(100, 50)
+offset_left = 546.0
+offset_top = 567.0
+offset_right = 646.0
+offset_bottom = 617.0
+text = "DOWN"
+
+[node name="Right" type="Button" parent="."]
+custom_minimum_size = Vector2(70, 50)
+offset_left = 1048.0
+offset_top = 281.0
+offset_right = 1118.0
+offset_bottom = 331.0
+text = "RIGHT"
+
+[node name="Left" type="Button" parent="."]
+custom_minimum_size = Vector2(70, 50)
+offset_left = 28.0
+offset_top = 281.0
+offset_right = 98.0
+offset_bottom = 331.0
+text = "LEFT
+"
+
+[node name="ResetRotation" type="Button" parent="."]
+offset_left = 31.0
+offset_top = 562.0
+offset_right = 130.0
+offset_bottom = 613.0
+text = "RESET"
+
+[connection signal="button_down" from="Up" to="." method="_on_up_button_down"]
+[connection signal="button_up" from="Up" to="." method="_on_up_button_up"]
+[connection signal="button_down" from="Down" to="." method="_on_down_button_down"]
+[connection signal="button_up" from="Down" to="." method="_on_down_button_up"]
+[connection signal="button_down" from="Right" to="." method="_on_right_button_down"]
+[connection signal="button_up" from="Right" to="." method="_on_right_button_up"]
+[connection signal="button_down" from="Left" to="." method="_on_left_button_down"]
+[connection signal="button_up" from="Left" to="." method="_on_left_button_up"]
+[connection signal="pressed" from="ResetRotation" to="." method="_on_reset_rotation_pressed"]

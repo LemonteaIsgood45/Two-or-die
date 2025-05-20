@@ -1,8 +1,7 @@
 extends Node3D
 
-var is_dragging := false
-var last_mouse_position := Vector2()
-var rotation_speed := 0.005  # Adjust this value to control rotation sensitivity
+const ROTATION_STEP := 5.0
+const ROTATION_SPEED := 80.0
 
 @onready var block1Scene = load("res://Scenes/Suitcase_block.tscn")
 @onready var block2Scene = load("res://Scenes/Suitcase_block.tscn")
@@ -26,11 +25,18 @@ var block6Pos = Vector3(-0.15, 0, -0.07)
 
 var serial_number 
 var battery_count 
-var timer
+@onready var timer
 var has_car_indicator: bool = false
 var has_frk_indicator: bool = false
 
 func _ready() -> void:
+	if GameState.role == "Instructor":
+		$Up.visible = false
+		$Down.visible = false
+		$Right.visible = false
+		$Left.visible = false
+		$ResetRotation.visible = false
+	
 	# Enable mouse input processing
 	set_process_input(true)
 	
@@ -65,6 +71,34 @@ func _ready() -> void:
 	
 	$CSGBox3D/BombLabel.text = serial_number
 
+func _process(delta: float) -> void:
+	if Input.is_action_pressed("rotate_up"):
+		rotation_degrees.x = clamp(rotation_degrees.x - ROTATION_SPEED * delta, -80, 80)
+	if Input.is_action_pressed("rotate_down"):
+		rotation_degrees.x = clamp(rotation_degrees.x + ROTATION_SPEED * delta, -80, 80)
+	if Input.is_action_pressed("rotate_left"):
+		rotation_degrees.z += ROTATION_SPEED * delta
+	if Input.is_action_pressed("rotate_right"):
+		rotation_degrees.z -= ROTATION_SPEED * delta
+
+	if GameState.current_mode == GameState.GameMode.PLAYING:
+		var incorrect_finished_blocks := 0
+		var total_finished := 0
+
+		for block in get_tree().get_nodes_in_group("puzzle_block"):
+			if "finish" in block and "correct" in block:
+				if block.finish:
+					total_finished += 1
+					if not block.correct:
+						incorrect_finished_blocks += 1
+
+
+		if incorrect_finished_blocks >= 1:
+			GameState.current_mode = GameState.GameMode.LOSE
+		elif total_finished == 5:
+			GameState.current_mode = GameState.GameMode.WIN
+
+
 func generate_random_serial_number() -> String:
 	var letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ123456789"
 	var serial_number = ""
@@ -78,31 +112,43 @@ func generate_random_serial_number() -> String:
 
 func generate_random_battery():
 	battery_count = randi() % 5
-
-func _input(event):
-	if event is InputEventMouseButton:
-		if event.button_index == MOUSE_BUTTON_LEFT:
-			if event.pressed:
-				# Start dragging
-				is_dragging = true
-				last_mouse_position = event.position
-			else:
-				# Stop dragging
-				is_dragging = false
-	
-	elif event is InputEventMouseMotion and is_dragging:
-		# Calculate mouse movement delta
-		var delta = event.position - last_mouse_position
-		last_mouse_position = event.position
-		
-		# Rotate the object based on mouse movement
-		rotate_z(delta.x * rotation_speed)  # Horizontal movement rotates around Y axis
-		rotate_x(-delta.y * rotation_speed)  # Vertical movement rotates around X axis
-		
-		# Optional: Clamp rotation on X axis to prevent flipping over
-		var current_rotation = rotation_degrees
-		current_rotation.x = clamp(current_rotation.x, -80, 80)
-		rotation_degrees = current_rotation
+	print("BATTERIES: " + str(battery_count))
 
 func reset_rotation():
 	rotation_degrees = Vector3.ZERO
+
+
+func _on_up_button_down() -> void:
+	Input.action_press("rotate_up")
+
+
+func _on_up_button_up() -> void:
+	Input.action_release("rotate_up")
+
+
+func _on_down_button_down() -> void:
+	Input.action_press("rotate_down")
+
+
+func _on_down_button_up() -> void:
+	Input.action_release("rotate_down")
+
+
+func _on_right_button_down() -> void:
+	Input.action_press("rotate_left")
+
+
+func _on_right_button_up() -> void:
+	Input.action_release("rotate_left")
+
+
+func _on_left_button_down() -> void:
+	Input.action_press("rotate_right")
+
+
+func _on_left_button_up() -> void:
+	Input.action_release("rotate_right")
+
+
+func _on_reset_rotation_pressed() -> void:
+	self.reset_rotation()

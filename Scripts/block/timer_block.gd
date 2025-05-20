@@ -16,4 +16,4 @@ func timer_left_to_live():
 
 func _process(delta: float) -> void:
 	label.text = "%02d:%02d" % timer_left_to_live()
-	parent.timer = label.text
+	parent.timer = "%02d:%02d" % timer_left_to_live()

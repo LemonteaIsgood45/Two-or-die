@@ -1,0 +1,43 @@
+[gd_scene load_steps=3 format=3 uid="uid://bym2kwocvr7ur"]
+
+[ext_resource type="Script" uid="uid://grph5kvs7vr3" path="res://Scripts/instruction.gd" id="1_8j6i5"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_8j6i5"]
+
+[node name="Instruction" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -1152.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_8j6i5")
+
+[node name="back_button" type="Button" parent="."]
+offset_left = 28.0
+offset_top = 282.0
+offset_right = 112.0
+offset_bottom = 333.0
+text = "BACK"
+
+[node name="next_button" type="Button" parent="."]
+offset_left = 1028.0
+offset_top = 290.0
+offset_right = 1108.0
+offset_bottom = 340.0
+text = "NEXT"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+offset_left = 172.0
+offset_top = 3.0
+offset_right = 986.0
+offset_bottom = 645.0
+
+[node name="image_display" type="TextureRect" parent="ScrollContainer"]
+layout_mode = 2
+texture = SubResource("CanvasTexture_8j6i5")
+expand_mode = 2
+
+[connection signal="pressed" from="back_button" to="." method="_on_left_pressed"]
+[connection signal="pressed" from="next_button" to="." method="_on_right_pressed"]

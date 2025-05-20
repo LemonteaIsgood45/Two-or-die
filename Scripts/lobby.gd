@@ -13,8 +13,8 @@ func _ready():
 	pass
 
 func _process(delta: float) -> void:
-	var defuser = {}
-	var instructor = {}
+	defuser = {}
+	instructor = {}
 
 	for player_id in GameState.players:
 		var player = GameState.players[player_id]
@@ -25,7 +25,6 @@ func _process(delta: float) -> void:
 
 	update_lobby(defuser, instructor)
 	update_status()
-
 
 # Called when a player joins the lobby
 @rpc("any_peer", "call_local")
@@ -46,15 +45,10 @@ func broadcast_player_joined(data):
 		guestID = data.id
 
 	if data.role == "Defuser":
-		defuser = {
-			"name": data.name,
-			"id": data.id
-		}
+		defuser = data
 	elif data.role == "Instructor":
-		instructor = {
-			"name": data.name,
-			"id": data.id
-		}
+		instructor = data
+
 	print("Current defuser: ", defuser)
 	print("Current instructor: ", instructor)
 	update_status()

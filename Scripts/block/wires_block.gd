@@ -3,6 +3,7 @@ extends Node3D
 @onready var BASE_WIRE = preload("res://Scenes/wires.tscn")
 
 var correct := false
+var finish := false
 
 var wires_data 
 var correct_cut_index
@@ -45,13 +46,15 @@ func _process(_delta: float) -> void:
 			if index == correct_cut_index and wires_cut == 1:
 				correct = true
 				%state.correct = correct
-				%state.finish = true
+				finish = true
+				%state.finish = finish
 				
 				print("Wire block corrected")
 			else:
 				correct = false
 				%state.correct = correct
-				%state.finish = true
+				finish = true
+				%state.finish = finish
 				
 				print("Wire block failed")
 

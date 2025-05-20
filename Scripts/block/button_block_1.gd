@@ -6,6 +6,7 @@ var is_hovered := false
 
 var finish := false
 var correct := false
+var prev_pressed := false
 
 var parent
 
@@ -26,8 +27,15 @@ func _ready():
 	update_button_color(get_color_from_name(button_color))
 
 func _process(delta: float) -> void:
+	if not finish:
+		if prev_pressed and not is_pressed:
+			# No need to do anything here anymore
+			pass
+		prev_pressed = is_pressed
+	
 	%state.finish = finish
 	%state.correct = correct
+
 
 # Function to change the text of the Label3D
 func update_label_text(new_text: String):
@@ -53,7 +61,9 @@ func _on_static_body_3d_input_event(camera: Node, event: InputEvent, event_posit
 			button_pressed()
 		else:
 			is_pressed = false
-			button_released()
+			if not finish:  # Only process if not finished
+				finish = true
+				correct = button_released()
 		_update_z_position()
 
 func _on_static_body_3d_mouse_exited() -> void:

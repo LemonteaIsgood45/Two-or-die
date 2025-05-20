@@ -19,10 +19,10 @@ func _ready() -> void:
 		elif player_data.role == "Instructor":
 			currentPlayer.global_position = $Instructor.global_position
 			currentPlayer.rotation_degrees = Vector3(-30, 0, 0)
-
-
-func _on_online_game_button_pressed() -> void:
-	pass
+	
+	if GameState.role == "Instructor":
+		var Instruction = load("res://Scenes/instruction.tscn").instantiate()
+		add_child(Instruction)
 
 func _process(delta):
 	if multiplayer.is_server() and not game_finished:
@@ -33,6 +33,7 @@ func _process(delta):
 			request_finish_game(false)
 			game_finished = true
 	pass
+	
 
 func _unhandled_input(event):
 	pass

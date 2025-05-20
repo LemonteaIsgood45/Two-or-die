@@ -35,8 +35,26 @@ project/assembly_name="Two or die"
 
 [global_group]
 
-clickable=""
-hoverable=""
+puzzle_block=""
+
+[input]
+
+rotate_up={
+"deadzone": 0.2,
+"events": []
+}
+rotate_down={
+"deadzone": 0.2,
+"events": []
+}
+rotate_left={
+"deadzone": 0.2,
+"events": []
+}
+rotate_right={
+"deadzone": 0.2,
+"events": []
+}
 
 [rendering]
 

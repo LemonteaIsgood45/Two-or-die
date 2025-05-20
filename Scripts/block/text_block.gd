@@ -154,7 +154,8 @@ func strike_display():
 
 
 func update_button_label(displayed_word: String, buttons: Dictionary) -> void:
-	$DisplayText/Label3D.text = displayed_word
+	await animate_label_text($DisplayText/Label3D, displayed_word)
+	await get_tree().create_timer(0.1).timeout
 
 	var label_nodes = [
 		$text_1/Label3D,
