@@ -9,8 +9,7 @@ func _process(delta: float) -> void:
 	var bus_index = AudioServer.get_bus_index("voice_chat")
 	var db = AudioServer.get_bus_peak_volume_left_db(bus_index, 0)
 
-	if db < -60.0:
-		db = -60.0  # Clamp noise floor
+	if db < -60.0:		db = -60.0  # Clamp noise floor
 
 	var volume_linear = db_to_linear(db)
 	var curved = pow(volume_linear, 0.5)  # Boost quiet parts

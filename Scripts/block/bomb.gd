@@ -3,12 +3,6 @@ extends Node3D
 const ROTATION_STEP := 5.0
 const ROTATION_SPEED := 80.0
 
-@onready var block1Scene = load("res://Scenes/Suitcase_block.tscn")
-@onready var block2Scene = load("res://Scenes/Suitcase_block.tscn")
-@onready var block3Scene = load("res://Scenes/Suitcase_block.tscn")
-@onready var block4Scene = load("res://Scenes/Suitcase_block.tscn")
-@onready var block5Scene = load("res://Scenes/Suitcase_block.tscn")
-@onready var block6Scene = load("res://Scenes/Suitcase_block.tscn")
 @onready var timerBlock = load("res://Scenes/timer_block.tscn")
 @onready var wiresBlock = load("res://Scenes/wires_block.tscn")
 @onready var buttonBlock = load("res://Scenes/button_block_1.tscn")
