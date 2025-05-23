@@ -4,16 +4,16 @@ A duplicate game of Keep talking and nobody explodes. Made with godot engine and
 
 ## Main menu
 
-![App Screenshot](Assets\Image\MainMenu.png)
+![App Screenshot](Assets/Image/MainMenu.png)
 
 ## Lan lobby
 
-![App Screenshot](Assets\Image\Lan.png)
+![App Screenshot](Assets/Image/Lan.png)
 
 ## Defuser side
 
-![App Screenshot](Assets\Image\Defuser.png)
+![App Screenshot](Assets/Image/Defuser.png)
 
 ## Instructor side
 
-![App Screenshot](Assets\Image\Instructor.png)
+![App Screenshot](Assets/Image/Instructor.png)
