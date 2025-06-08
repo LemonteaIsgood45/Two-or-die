@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://cagh753bk1g3c"]
+
+[ext_resource type="Texture2D" uid="uid://b0i2im4sh7874" path="res://Assets/Textures/kenney_prototype_textures/red/texture_12.png" id="1_6f2n0"]
+[ext_resource type="Texture2D" uid="uid://0ibp8u0i7dn4" path="res://Assets/Textures/kenney_prototype_textures/light/texture_11.png" id="2_e7n77"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_e7n77"]
+albedo_texture = ExtResource("1_6f2n0")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jx528"]
+albedo_texture = ExtResource("2_e7n77")
+
+[node name="Batery" type="Node3D"]
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="."]
+radius = 0.007
+height = 0.05
+sides = 12
+material = SubResource("StandardMaterial3D_e7n77")
+
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.02546, 0)
+radius = 0.004
+height = 0.004
+material = SubResource("StandardMaterial3D_jx528")

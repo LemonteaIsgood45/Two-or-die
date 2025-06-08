@@ -105,8 +105,42 @@ func generate_random_serial_number() -> String:
 	return serial_number
 
 func generate_random_battery():
-	battery_count = randi() % 5
+	var battery_count = randi() % 6  # 0 to 5 inclusive
 	print("BATTERIES: " + str(battery_count))
+
+	var max_per_placeholder = 2
+	var placeholders = 3
+	
+	var values = split_with_max_limit(battery_count, placeholders, max_per_placeholder)
+	
+	# Assign to placeholders
+	$Placeholder_1/Node3D.number_of_batteries = values[0]
+	$Placeholder_2/Node3D.number_of_batteries = values[1]
+	$Placeholder_3/Node3D.number_of_batteries = values[2]
+	
+	print("Assigned: ", values)
+
+func split_with_max_limit(total: int, slots: int, max_per_slot: int) -> Array:
+	var result = []
+	
+	# Create a list of slots and initialize with 0
+	for i in range(slots):
+		result.append(0)
+
+	# Assign batteries one at a time to random valid slots
+	for i in range(total):
+		var attempts = 0
+		while true:
+			var index = randi() % slots
+			if result[index] < max_per_slot:
+				result[index] += 1
+				break
+			attempts += 1
+			if attempts > 10:
+				break  # just in case (shouldn't happen)
+	
+	return result
+
 
 func reset_rotation():
 	rotation_degrees = Vector3.ZERO

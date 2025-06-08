@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://dyydrbgiya60v"]
+[gd_scene load_steps=5 format=3 uid="uid://dyydrbgiya60v"]
 
 [ext_resource type="Script" uid="uid://pt1qy4c0lhsn" path="res://Scripts/block/bomb.gd" id="1_2fiif"]
 [ext_resource type="PackedScene" uid="uid://dgrk4ge7ybanv" path="res://Assets/suitcase_with_combination_lock.glb" id="1_yx723"]
+[ext_resource type="PackedScene" uid="uid://d1g1c81agw7qx" path="res://Scenes/battery_socket.tscn" id="3_2fiif"]
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_kdyat"]
 properties/0/path = NodePath(".:rotation")
@@ -66,6 +67,24 @@ offset_top = 342.0
 offset_right = 90.0
 offset_bottom = 383.0
 text = "RESET"
+
+[node name="Placeholder_1" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.125868, -0.00481718, -0.148163)
+
+[node name="Node3D" parent="Placeholder_1" instance=ExtResource("3_2fiif")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0115941, 0)
+
+[node name="Placeholder_2" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -0.0920029, 0.0116275, -0.148163)
+
+[node name="Node3D" parent="Placeholder_2" instance=ExtResource("3_2fiif")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0115941, 0)
+
+[node name="Placeholder_3" type="Node3D" parent="."]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, -0.23952, 0, 0)
+
+[node name="Node3D" parent="Placeholder_3" instance=ExtResource("3_2fiif")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0115941, 0)
 
 [connection signal="button_down" from="Up" to="." method="_on_up_button_down"]
 [connection signal="button_up" from="Up" to="." method="_on_up_button_up"]
