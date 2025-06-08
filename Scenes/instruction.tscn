@@ -15,27 +15,32 @@ grow_vertical = 2
 script = ExtResource("1_8j6i5")
 
 [node name="back_button" type="Button" parent="."]
-offset_left = 28.0
-offset_top = 282.0
-offset_right = 112.0
-offset_bottom = 333.0
+layout_mode = 0
+offset_left = 148.0
+offset_top = 184.0
+offset_right = 232.0
+offset_bottom = 235.0
 text = "BACK"
 
 [node name="next_button" type="Button" parent="."]
-offset_left = 1028.0
-offset_top = 290.0
-offset_right = 1108.0
-offset_bottom = 340.0
+layout_mode = 0
+offset_left = 936.0
+offset_top = 187.0
+offset_right = 1016.0
+offset_bottom = 237.0
 text = "NEXT"
 
 [node name="ScrollContainer" type="ScrollContainer" parent="."]
-offset_left = 172.0
+layout_mode = 0
+offset_left = 286.0
 offset_top = 3.0
-offset_right = 986.0
-offset_bottom = 645.0
+offset_right = 867.0
+offset_bottom = 422.0
+mouse_filter = 2
 
 [node name="image_display" type="TextureRect" parent="ScrollContainer"]
 layout_mode = 2
+mouse_filter = 2
 texture = SubResource("CanvasTexture_8j6i5")
 expand_mode = 2
 

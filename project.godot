@@ -27,6 +27,8 @@ GlobalAudio="*res://Scripts/global_audio.gd"
 
 [display]
 
+window/size/viewport_width=900
+window/size/viewport_height=420
 window/stretch/mode="canvas_items"
 
 [dotnet]

@@ -8,7 +8,7 @@ func _on_online_game_button_pressed() -> void:
 
 #LAN
 func _on_lan_game_button_pressed() -> void:
-	GameState.game_controller.change_gui_scene("res://Scenes/GUI/lan.tscn", false)
+	GameState.game_controller.change_gui_scene("res://Scenes/GUI/lan.tscn")
 	pass
 
 #SETTING

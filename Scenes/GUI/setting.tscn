@@ -8,12 +8,11 @@ layout_mode = 3
 anchors_preset = 0
 offset_left = 10.0
 offset_top = 1.0
-offset_right = 1151.0
-offset_bottom = 639.0
+offset_right = 901.0
+offset_bottom = 427.0
 
 [node name="setting" type="ColorRect" parent="."]
 unique_name_in_owner = true
-z_index = 1
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -26,16 +25,16 @@ color = Color(0, 0, 0, 0.894118)
 
 [node name="Label" type="Label" parent="setting"]
 layout_mode = 0
-offset_left = 404.0
-offset_top = 50.0
-offset_right = 732.0
-offset_bottom = 160.0
-theme_override_font_sizes/font_size = 80
+offset_left = 305.0
+offset_top = -2.0
+offset_right = 633.0
+offset_bottom = 108.0
+theme_override_font_sizes/font_size = 60
 text = "SETTING"
 
 [node name="settings" parent="setting" instance=ExtResource("1_h44gi")]
 layout_mode = 0
-offset_left = 342.0
-offset_top = 178.0
-offset_right = 845.0
-offset_bottom = 453.0
+offset_left = 186.0
+offset_top = 81.0
+offset_right = 689.0
+offset_bottom = 413.0

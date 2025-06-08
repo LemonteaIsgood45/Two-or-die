@@ -3,11 +3,11 @@
 [ext_resource type="Script" uid="uid://dmofqe73q6pas" path="res://Scripts/settings.gd" id="1_4geyq"]
 
 [node name="settings" type="VBoxContainer"]
-offset_left = 78.0
-offset_top = 182.0
-offset_right = 579.0
-offset_bottom = 286.0
-theme_override_constants/separation = 10
+offset_left = 183.0
+offset_top = 56.0
+offset_right = 686.0
+offset_bottom = 388.0
+theme_override_constants/separation = 5
 script = ExtResource("1_4geyq")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]

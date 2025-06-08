@@ -32,6 +32,13 @@ func _process(delta):
 		elif GameState.current_mode == GameState.GameMode.LOSE:
 			request_finish_game(false)
 			game_finished = true
+	elif not multiplayer.is_server() and not game_finished:
+		if GameState.current_mode == GameState.GameMode.WIN:
+			client_request_finish.rpc(true)
+			game_finished = true
+		elif GameState.current_mode == GameState.GameMode.LOSE:
+			client_request_finish.rpc(false)
+			game_finished = true
 	pass
 	
 
@@ -46,19 +53,25 @@ func request_finish_game(win: bool):
 		finish_game.rpc(win)
 
 # This RPC is called on all clients and the server to update game state
-@rpc("any_peer", "call_local")
+@rpc("any_peer", "call_local", "reliable")
 func finish_game(win: bool):
-	print("Finishing game with win state: " + str(win))
+	if game_finished:
+		return
 	game_finished = true
-	#has_game_ended = true
-	
-	# Explicitly update the GameState mode on all peers
+
 	if win:
 		GameState.current_mode = GameState.GameMode.WIN
 		print("Game finished: WIN")
 	else:
 		GameState.current_mode = GameState.GameMode.LOSE
 		print("Game finished: LOSE")
+
 	
 	# Could add additional visualization or UI updates here
 	print("GameState.current_mode updated to: " + str(GameState.current_mode))
+
+@rpc("any_peer", "reliable")
+func client_request_finish(win: bool):
+	if multiplayer.is_server() and not game_finished:
+		print("Client", multiplayer.get_remote_sender_id(), "requested finish. Win =", win)
+		request_finish_game(win)
